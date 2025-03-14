@@ -1,5 +1,5 @@
 import chess
-import random
+from randomPlayer import random_player
 
 def human_player(board):
 	"""Gets a move from a human player."""
@@ -14,10 +14,6 @@ def human_player(board):
 				print("Illegal move! Try again.")
 		except ValueError:
 			print("Invalid move format! Use UCI notation (e.g., e2e4).")
-
-def random_player(board):
-	"""Plays a random move."""
-	return random.choice(list(board.legal_moves))
 
 def play_game(player_white, player_black):
 	"""Plays a chess game with two players."""
