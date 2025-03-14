@@ -1,5 +1,5 @@
 import chess
-from randomPlayer import random_player
+from chessAlgorithms.randomPlayer import random_player
 
 def human_player(board):
 	"""Gets a move from a human player."""
