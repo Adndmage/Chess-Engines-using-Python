@@ -32,8 +32,21 @@ def calculate_board_material(board):
 	piece_values = [1, 3, 3, 5, 9, 1000, -1, -3, -3, -5, -9, -1000] 
 	
 	# sum all piece values for each side
-	material = np.sum(bitboardTensor * piece_values, axis=(0, 1))
+	material = np.sum(bitboardTensor * piece_values)
 
 	# return difference between white and black
 	return material
-    
+
+
+
+# Test the function
+board = chess.Board()
+print(calculate_board_material(board))  # Expected output: 0
+board.push_san("e4")
+board.push_san("e5")
+board.push_san("Qh5")
+board.push_san("Nc6")
+board.push_san("Bc4")
+board.push_san("Nf6")
+board.push_san("Qxf7")
+print(calculate_board_material(board))  # Expected output: 1
