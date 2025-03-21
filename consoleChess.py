@@ -33,4 +33,4 @@ def play_game(player_white, player_black):
 	print("Result:", board.result())
 
 # Play a human vs human game
-play_game(human_player, random_player)
+play_game(random_player, random_player)
