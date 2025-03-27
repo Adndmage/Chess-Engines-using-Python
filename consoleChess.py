@@ -20,16 +20,20 @@ def human_player(board):
 def play_game(player_white, player_black):
 	"""Plays a chess game with two players."""
 	board = chess.Board()
+	print(board)
 
-	while not board.is_game_over():
-		print(board)
-
+	i = 0
+	while not board.is_game_over() and i < 500:
 		if board.turn:  # White's turn
 			move = player_white(board)
 		else:  # Black's turn
-			move = player_black(board,calculate_board_material)
+			move = player_black(board,calculate_board_material, -1)
 
 		board.push(move)
+
+		i += 1
+		print(f"\nMove {i}:")
+		print(board)
 
 	print("Game over!")
 	print("Result:", board.result())
