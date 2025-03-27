@@ -1,5 +1,7 @@
 import chess
 from chessAlgorithms.randomPlayer import random_player
+from chessAlgorithms.bestNextMove import bestNextMovePlayer
+from evaluationFunctions.calculateBoardMaterial import calculate_board_material
 
 def human_player(board):
 	"""Gets a move from a human player."""
@@ -25,7 +27,7 @@ def play_game(player_white, player_black):
 		if board.turn:  # White's turn
 			move = player_white(board)
 		else:  # Black's turn
-			move = player_black(board)
+			move = player_black(board,calculate_board_material)
 
 		board.push(move)
 
@@ -33,4 +35,4 @@ def play_game(player_white, player_black):
 	print("Result:", board.result())
 
 # Play a human vs human game
-play_game(random_player, random_player)
+play_game(random_player, bestNextMovePlayer)

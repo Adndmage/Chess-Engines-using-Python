@@ -3,8 +3,12 @@ def bestNextMovePlayer(board, evaluationFunction):
 	bestEvalf = float('-inf')
 
 	for move in board.legal_moves:
-		# evaluation function of board after move
-		evalf = evaluationFunction(board.copy().push(move))
+		# Create a copy of the board and apply the move
+		board_copy = board.copy()
+		board_copy.push(move)
+		
+		# Evaluate the board after the move
+		evalf = evaluationFunction(board_copy)
 
 		if evalf > bestEvalf:
 			bestEvalf = evalf

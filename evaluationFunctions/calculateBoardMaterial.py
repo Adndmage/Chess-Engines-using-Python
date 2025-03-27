@@ -38,5 +38,5 @@ def calculate_board_material(board):
 	return np.sum(square_material)
 
 # Test the function
-# board = chess.Board()
-# print(calculate_board_material(board))
+#board = chess.Board()
+#print(calculate_board_material(board))
