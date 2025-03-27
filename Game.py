@@ -1,6 +1,7 @@
 import chess
 from random import shuffle
 from chessAlgorithms.randomPlayer import random_player
+from minimax import computer_ai
 
 class Game:
     def __init__(self, players):
@@ -25,5 +26,5 @@ class Game:
 
     
     def computer_move(self):
-        move = random_player(self.board)
+        move = computer_ai(self.board)
         self.board.push(move)
