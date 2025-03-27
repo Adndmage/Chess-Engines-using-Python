@@ -25,7 +25,8 @@ def play_game(player_white, player_black):
 	i = 0
 	while not board.is_game_over() and i < 500:
 		if board.turn:  # White's turn
-			move = player_white(board)
+			# move = player_white(board)
+			move = human_player(board)
 		else:  # Black's turn
 			move = player_black(board,calculate_board_material, -1)
 
