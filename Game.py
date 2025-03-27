@@ -1,7 +1,7 @@
 import chess
 from random import shuffle
 from chessAlgorithms.randomPlayer import random_player
-from minimax import computer_ai
+from minimax import minimax_ai
 
 class Game:
     def __init__(self, players):
@@ -24,7 +24,10 @@ class Game:
         except ValueError:
             print("Invalid move notation! Use standard algebraic notation (SAN).")
 
+    def computer_move_random(self):
+        move = random_player(self.board)
+        self.board.push(move)
     
-    def computer_move(self):
-        move = computer_ai(self.board)
+    def computer_move_minimax(self):
+        move = minimax_ai(self.board)
         self.board.push(move)

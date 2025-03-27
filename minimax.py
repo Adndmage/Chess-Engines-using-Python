@@ -2,7 +2,7 @@ import chess
 from evaluationFunctions.calculateBoardMaterial import calculate_board_material
 
 # Initial minimax caller. Has the move information
-def computer_ai(board):
+def minimax_ai(board):
     if board.turn:
         best_evaluation = -10000
         best_move = None

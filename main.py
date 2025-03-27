@@ -8,7 +8,7 @@ while not game.board.is_game_over():
         print(game.board)
         game.human_move()
     else:
-        game.computer_move()
+        game.computer_move_minimax()
 
 print("Game over")
 print(game.board)
