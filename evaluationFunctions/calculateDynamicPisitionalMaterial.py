@@ -1,3 +1,6 @@
+"""
+identical to calculateBoardMaterial.py but allows one to add an amount of material based on pieces position
+"""
 import chess
 import numpy as np
 

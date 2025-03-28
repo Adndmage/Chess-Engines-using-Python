@@ -1,3 +1,7 @@
+"""
+Calculates the board material by first creating a tensor of board piece positions, then mulitplies each piece with its respective value and sums the values for each side
+identical to materialValue.py but with a different implementation which allows for easier extension to dynamic positional material evaluation
+"""
 import chess
 import numpy as np
 

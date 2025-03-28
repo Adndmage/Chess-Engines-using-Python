@@ -1,3 +1,7 @@
+"""
+calculates board material by counting up the pieces and multiplying them with their respective values
+"""
+
 import chess
 
 PIECE_VALUES = {
