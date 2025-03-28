@@ -6,7 +6,7 @@ from chessAlgorithms.bestNextMove import bestNextMovePlayer
 
 from evaluationFunctions.calculateBoardMaterial import calculate_board_material
 
-from minimax import minimax_ai
+from chessAlgorithms.minimax import minimax_ai
 
 """
 The Game manager which holds players
@@ -17,7 +17,7 @@ class Game:
 		self.board = chess.Board()
 		self.players = players
 	
-	
+
 	### utilities for the "arena"
 	def randomize_starting_player(self):
 		shuffle(self.players)
