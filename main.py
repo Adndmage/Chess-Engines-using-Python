@@ -3,6 +3,9 @@ from Game import *
 
 game = Game(["Human", "AI"])
 
+"""
+The Arena game loop
+"""
 
 turnnr = 0
 print(game.board)

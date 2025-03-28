@@ -8,14 +8,22 @@ from evaluationFunctions.calculateBoardMaterial import calculate_board_material
 
 from minimax import minimax_ai
 
+"""
+The Game manager which holds players
+"""
+
 class Game:
 	def __init__(self, players):
 		self.board = chess.Board()
 		self.players = players
 	
+	
+	### utilities for the "arena"
 	def randomize_starting_player(self):
 		shuffle(self.players)
 	
+
+	### human player handeling
 	def human_move_prompt(self):
 		move = input(f"Enter move for {'White' if self.board.turn else 'Black'} (e.g., Nf3): ").strip()
 
@@ -29,6 +37,8 @@ class Game:
 		except ValueError:
 			print("Invalid move notation! Use standard algebraic notation (SAN).")
 
+
+	### computer player handeling
 	def computer_move_random(self):
 		move = random_player(self.board)
 		self.board.push(move)
