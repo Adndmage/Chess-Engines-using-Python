@@ -11,9 +11,9 @@ PIECE_VALUES = {
 
 def calculate_material_value(board):
     if board.is_game_over():
-        if board.winner == chess.WHITE:
+        if board.outcome == chess.WHITE:
             return 100000
-        elif board.winner == chess.BLACK:
+        elif board.outcome == chess.BLACK:
             return -100000
         else:
             return 0

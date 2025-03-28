@@ -3,13 +3,14 @@ from Game import *
 
 game = Game(["Human", "AI"])
 
+
 turnnr = 0
 print(game.board)
 while not game.board.is_game_over():
     if game.board.turn:
-        game.computer_move_random()
+        game.computer_next_best_move(1)
     else:
-        game.computer_move_minimax()
+        game.computer_next_best_move(-1)
 
     turnnr += 1
     print(f"\nMove {turnnr}:")

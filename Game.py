@@ -1,6 +1,11 @@
 import chess
 from random import shuffle
+
 from chessAlgorithms.randomPlayer import random_player
+from chessAlgorithms.bestNextMove import bestNextMovePlayer
+
+from evaluationFunctions.calculateBoardMaterial import calculate_board_material
+
 from minimax import minimax_ai
 
 class Game:
@@ -18,8 +23,6 @@ class Game:
 			return move
 	
 	def human_move(self):
-		print(f"\nMove {i}:")
-		i += 1
 		try:
 			move = self.human_move_prompt()
 			self.board.push_san(move)
@@ -28,6 +31,10 @@ class Game:
 
 	def computer_move_random(self):
 		move = random_player(self.board)
+		self.board.push(move)
+	
+	def computer_next_best_move(self, side):
+		move = bestNextMovePlayer(self.board, calculate_board_material, side)
 		self.board.push(move)
 	
 	def computer_move_minimax(self):
