@@ -1,3 +1,6 @@
+"""
+Allows the player to input moves in standard algebraic notation (SAN) using the console.
+"""
 def human_player(board):
 	while True:
 		move = input(f"Enter move for {'White' if board.turn else 'Black'} (e.g., Nf3): ").strip()

@@ -1,3 +1,6 @@
+"""
+minimax implementation to decide upon moves
+"""
 import chess
 from random import choice
 from evaluationFunctions.materialValue import calculate_material_value

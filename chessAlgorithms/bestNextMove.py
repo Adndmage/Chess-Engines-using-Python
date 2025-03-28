@@ -1,3 +1,6 @@
+"""
+considers the elo after each possible move, and choces randomly between the best moves
+"""
 import random
 def bestNextMovePlayer(board, evaluationFunction, side): # side = black = -1, white = 1
 	# has a list of best moves such that a random can be chocen in case they are equal

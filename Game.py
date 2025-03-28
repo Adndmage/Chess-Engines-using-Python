@@ -1,7 +1,6 @@
 import chess
 from random import shuffle
 
-
 ### import evaluation functions
 from evaluationFunctions.calculateBoardMaterial import calculate_board_material
 

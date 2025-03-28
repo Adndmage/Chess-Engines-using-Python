@@ -1,3 +1,6 @@
+"""
+identical to calculateDynamicPisitionalMaterial.py but have learnable values for positional value
+"""
 # calculate numpy bitboard for each piecetype
 # multiply by positional piece value (ie by another numpy bitboard instead of a scalar)
 # sum all piece values for each side
