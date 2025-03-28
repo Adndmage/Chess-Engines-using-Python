@@ -10,7 +10,7 @@ def minimax_ai(board):
 
         for move in board.legal_moves:
             board.push(move)
-            evaluation = minimax(board, 3, -100000, 100000, False)
+            evaluation = minimax(board, 2, -100000, 100000, False)
             board.pop()
 
             if evaluation > best_evaluation:
@@ -25,7 +25,7 @@ def minimax_ai(board):
 
         for move in board.legal_moves:
             board.push(move)
-            evaluation = minimax(board, 3, -100000, 100000, True)
+            evaluation = minimax(board, 2, -100000, 100000, True)
             board.pop()
 
             if evaluation < best_evaluation:
