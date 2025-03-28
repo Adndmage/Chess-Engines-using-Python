@@ -19,20 +19,20 @@ piece_map = {
 
 def calculate_board_material(board):
 	# calculate numpy bitboard for each piecetype
-	bitboardTensor = np.zeros((12, 8, 8))
+	bitboardTensor = np.zeros((12, 8, 8)) # all zeros
 	for square in chess.SQUARES:
 		piece = board.piece_at(square)
 		if piece:
 			plane = piece_map[(piece.piece_type, piece.color)]
 			row = 7 - (square // 8)
 			col = square % 8
-			bitboardTensor[plane][row][col] = 1
+			bitboardTensor[plane][row][col] = 1 # set to relevant square in the bitboard tensor to 1 if there is a piece 
 
 	# multiply by piece value (bitboard multiplied with scalar)
-	piece_values = np.array([1, 3, 3, 5, 9, 1000, -1, -3, -3, -5, -9, -1000])
+	piece_values = np.array([1, 3, 3, 5, 9, 1000, -1, -3, -3, -5, -9, -1000]) # multiplies the bitboard tensor with the piece values
 	
 	# sum all piece values for each side
-	square_material = bitboardTensor * piece_values[:, np.newaxis, np.newaxis]
+	square_material = bitboardTensor * piece_values[:, np.newaxis, np.newaxis] # by taking the sum we get the final material value 
 
 	# return difference between white and black
 	return np.sum(square_material)
