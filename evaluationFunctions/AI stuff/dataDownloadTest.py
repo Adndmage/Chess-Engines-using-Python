@@ -55,9 +55,15 @@ def fetch_lichess_games(username="magnuscarlsen", num_games=10):
     
     return data
 
-# Example usage
-lichess_data = fetch_lichess_games("MW1966", 50)
-print()
-for game in lichess_data:
-    print()
-    print(game)  # Print the first 5 board states and evaluations of each game
+def save_to_file(data, filename="lichess_games.json"):
+    """Save the extracted data to a JSON file."""
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
+        print(f"Data successfully saved to {filename}")
+    except Exception as e:
+        print(f"Error saving data to file: {e}")
+
+
+lichess_data = fetch_lichess_games("MW1966", 1000)
+save_to_file(lichess_data, "lichess_games_MW1966.json")
