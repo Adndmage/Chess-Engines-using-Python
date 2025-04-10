@@ -3,12 +3,14 @@ from random import shuffle
 
 ### import evaluation functions
 from evaluationFunctions.calculateBoardMaterial import calculate_board_material
+from evaluationFunctions.calculateAIEvalf import evaluate_board
 
 ### import chess algorithms
 from chessAlgorithms.humanPlayer import human_player
 from chessAlgorithms.randomPlayer import random_player
 from chessAlgorithms.bestNextMove import bestNextMovePlayer
 from chessAlgorithms.minimax import minimax_ai
+
 
 """
 The Game manager which holds players
@@ -37,8 +39,9 @@ class Game:
 		self.board.push(move)
 	
 	def computer_next_best_move(self, side):
-		move = bestNextMovePlayer(self.board, calculate_board_material, side)
+		move = bestNextMovePlayer(self.board, evaluate_board, side)
 		self.board.push(move)
+		print(evaluate_board(self.board))
 	
 	def computer_move_minimax(self):
 		move = minimax_ai(self.board)

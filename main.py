@@ -11,7 +11,7 @@ turnnr = 0
 print(game.board)
 while not game.board.is_game_over():
     if game.board.turn:
-        game.computer_move_minimax()
+        game.computer_move_random()
     else:
         game.computer_next_best_move(-1)
 
