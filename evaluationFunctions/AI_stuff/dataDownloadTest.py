@@ -65,5 +65,5 @@ def save_to_file(data, filename="lichess_games.json"):
         print(f"Error saving data to file: {e}")
 
 
-lichess_data = fetch_lichess_games("MW1966", 1000)
-save_to_file(lichess_data, "lichess_games_MW1966.json")
+lichess_data = fetch_lichess_games("skiddol", 1000)
+save_to_file(lichess_data, "lichess_games_skiddol.json")
