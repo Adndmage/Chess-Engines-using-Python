@@ -158,12 +158,10 @@ def test_model_on_samples(model, dataset, criterion, num_samples=10):
 # Example usage
 if __name__ == "__main__":
     # Path to the JSON file
-    #lichess_games_MW1966.json
-    #lichess_games_luka3916.json
-    #lichess_games_skiddol.json
     json_file_path1 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_MW1966.json"
     json_file_path2 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_luka3916.json"
     json_file_path3 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_skiddol.json"
+    json_file_path4 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
     # Path to save/load the model
     model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\model.pth"
@@ -172,6 +170,8 @@ if __name__ == "__main__":
     dataset = load_dataset_toupleList(json_file_path1)
     dataset += load_dataset_toupleList(json_file_path2)
     dataset += load_dataset_toupleList(json_file_path3)
+    dataset += load_dataset_toupleList(json_file_path4)
+    
 
     # Initialize the network
     model = SimpleChessNet()
