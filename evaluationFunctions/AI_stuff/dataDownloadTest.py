@@ -38,14 +38,7 @@ def fetch_lichess_games(username="magnuscarlsen", num_games=10):
                 # Get the evaluation if it exists
                 eval_data = evaluations[i] if i < len(evaluations) else None # json/dictionary
 
-                if eval_data is None:
-                    # Check if the move results in a check
-                    if board.is_checkmate():
-                        eval_value = -10000 if board.turn else 10000  # Negative for losing, positive for winning
-                    else:
-                        continue
                 
-                #print(eval_data)  # Print evaluation data for inspection
                 
                 if "eval" in eval_data:
                     eval_value = eval_data["eval"]
@@ -54,11 +47,11 @@ def fetch_lichess_games(username="magnuscarlsen", num_games=10):
                     if eval_data["mate"] > 0:
                         eval_value = 10000 - eval_data["mate"] * 100
                     else:
-                        eval_value = -10000 + eval_data["mate"] * 100
+                        eval_value = -10000 + eval_data["mate"] * -100
                 else:
-                    # If no "eval" or "mate", check for a check move
-                    if board.is_check():
-                        eval_value = 10000
+                    print(eval_data)
+                    if board.is_checkmate():
+                        eval_value = -10000 if board.turn else 10000  # Negative for losing, positive for winning
                     else:
                         continue
                 
@@ -69,6 +62,7 @@ def fetch_lichess_games(username="magnuscarlsen", num_games=10):
                 })
             except Exception as e:
                 print(f"Error processing move {move}: {e}")
+                #print(f"Game json: {game}")
                 break
         
         data.append(game_data)
@@ -84,6 +78,6 @@ def save_to_file(data, filename="lichess_games.json"):
     except Exception as e:
         print(f"Error saving data to file: {e}")
 
-
-lichess_data = fetch_lichess_games("skiddol", 100)
-save_to_file(lichess_data, "lichess_games_skiddol.json")
+# skiddol luka3916 MW1966
+lichess_data = fetch_lichess_games("MW1966", 1000)
+save_to_file(lichess_data, "lichess_games_MW1966.json")
