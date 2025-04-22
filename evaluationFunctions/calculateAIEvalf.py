@@ -1,10 +1,12 @@
 import torch
 import chess
 import numpy as np
-from .AI_stuff.TrainAiBoardEvalNN import SimpleChessNet, boardToTensor
+from AI_stuff.TrainAiBoardEvalNN import SimpleChessNet, boardToTensor
+import os
 
-# Path to the saved model
-model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\model.pth"
+# Dynamically determine the path to the model file
+current_dir = os.path.dirname(__file__)  # Directory of the current script
+model_file_path = os.path.join(current_dir, "AI_stuff", "model.pth")
 
 def evaluate_board(board):
     """
