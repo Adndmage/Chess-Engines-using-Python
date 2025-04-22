@@ -5,6 +5,41 @@ import chess
 from random import choice
 from evaluationFunctions.materialValue import calculate_material_value
 
+def search(board):
+    best_evaluation = -100000
+    best_move = choice(list(board.legal_moves))
+
+    for move in board.legal_moves:
+        board.push(move)
+        evaluation = -minimax(board, -100000, 100000, 3)
+        board.pop()
+
+        if evaluation > best_evaluation:
+            best_evaluation = evaluation
+            best_move = move
+    
+    return best_move
+
+def minimax(board, alpha, beta, depth):
+    if depth == 0 or board.is_game_over():
+        return calculate_material_value(board)
+    
+    best_evaluation = -100000
+
+    for move in board.legal_moves:
+        board.push(move)
+        evaluation = -minimax(board, -alpha, -beta, depth - 1)
+        board.pop()
+
+        if evaluation > best_evaluation:
+            best_evaluation = evaluation
+            alpha = max(alpha, evaluation)
+        
+        if evaluation >= beta:
+            return best_evaluation
+    
+    return best_evaluation
+
 # Initial minimax caller. Has the move information
 def minimax_ai(board):
     if board.turn:
@@ -13,7 +48,7 @@ def minimax_ai(board):
 
         for move in board.legal_moves:
             board.push(move)
-            evaluation = minimax(board, 2, -100000, 100000, False)
+            evaluation = minimax2(board, 2, -100000, 100000, False)
             board.pop()
 
             if evaluation > best_evaluation:
@@ -28,7 +63,7 @@ def minimax_ai(board):
 
         for move in board.legal_moves:
             board.push(move)
-            evaluation = minimax(board, 2, -100000, 100000, True)
+            evaluation = minimax2(board, 2, -100000, 100000, True)
             board.pop()
 
             if evaluation < best_evaluation:
@@ -38,7 +73,7 @@ def minimax_ai(board):
         return best_move
 
 # Minimax using basic counting evaluation function
-def minimax(board, depth, alpha, beta, is_maximizing_player):
+def minimax2(board, depth, alpha, beta, is_maximizing_player):
     if depth == 0 or board.is_game_over():
         return calculate_material_value(board)
 
@@ -47,7 +82,7 @@ def minimax(board, depth, alpha, beta, is_maximizing_player):
 
         for move in board.legal_moves:
             board.push(move)
-            evaluation = minimax(board, depth - 1, alpha, beta, False)
+            evaluation = minimax2(board, depth - 1, alpha, beta, False)
             board.pop()
 
             max_evaluation = max(max_evaluation, evaluation)
@@ -63,7 +98,7 @@ def minimax(board, depth, alpha, beta, is_maximizing_player):
 
         for move in board.legal_moves:
             board.push(move)
-            evaluation = minimax(board, depth - 1, alpha, beta, False)
+            evaluation = minimax2(board, depth - 1, alpha, beta, False)
             board.pop()
 
             min_evaluation = min(min_evaluation, evaluation)

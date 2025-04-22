@@ -9,7 +9,7 @@ from evaluationFunctions.calculateAIEvalf import evaluate_board
 from chessAlgorithms.humanPlayer import human_player
 from chessAlgorithms.randomPlayer import random_player
 from chessAlgorithms.bestNextMove import bestNextMovePlayer
-from chessAlgorithms.minimax import minimax_ai
+from chessAlgorithms.minimax import search, minimax_ai
 
 
 """
@@ -44,5 +44,6 @@ class Game:
 		print(evaluate_board(self.board))
 	
 	def computer_move_minimax(self):
-		move = minimax_ai(self.board)
+		move = search(self.board)
+		print(move)
 		self.board.push(move)

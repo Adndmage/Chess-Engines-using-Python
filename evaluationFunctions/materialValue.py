@@ -32,4 +32,7 @@ def calculate_material_value(board):
         else:
             evaluation -= value
     
+    if board.turn == False:
+        evaluation *= -1
+
     return evaluation

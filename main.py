@@ -7,16 +7,16 @@ game = Game(["Human", "AI"])
 The Arena game loop
 """
 
-turnnr = 0
+move_number = 0
 print(game.board)
 while not game.board.is_game_over():
     if game.board.turn:
-        game.computer_move_random()
+        game.human_move()
     else:
-        game.computer_next_best_move(-1)
+        game.computer_move_minimax()
 
-    turnnr += 1
-    print(f"\nMove {turnnr}:")
+    move_number += 1
+    print(f"\nMove {move_number}:")
     print(game.board)
 
 print("Game over!")

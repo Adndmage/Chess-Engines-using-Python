@@ -2,6 +2,7 @@ import chess
 
 board = chess.Board()
 print(board)
+print(f"Turn: {board.turn}")
 
 print(f"Legal Moves: \n{board.legal_moves}\n")
 
