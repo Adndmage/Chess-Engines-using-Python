@@ -184,7 +184,11 @@ if __name__ == "__main__":
         print("No saved model found. Starting from scratch.")
 
     # Define a loss function and optimizer
-    criterion = nn.MSELoss()  # Mean Squared Error for regression
+    #criterion = nn.MSELoss()  # Mean Squared Error for regression
+    criterion = nn.SmoothL1Loss()  # Huber Loss
+        #Directional Accuracy: It penalizes errors proportionally, ensuring that the model learns the correct direction.
+        #Magnitude Sensitivity: It considers the magnitude of errors but reduces the impact of large outliers.
+
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # Train the model
