@@ -194,11 +194,7 @@
         },
         {
             "board_fen": "5rk1/ppp3pp/2n5/7b/3P4/P1Pqp2P/4N2R/2R1KQ2 b - - 5 25",
-            "evaluation": null
-        },
-        {
-            "board_fen": "5rk1/ppp3pp/2n5/7b/3P4/P1P1p2P/3qN2R/2R1KQ2 w - - 6 26",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -818,7 +814,7 @@
         },
         {
             "board_fen": "8/8/8/2p1k3/8/5B2/3R1KP1/5r2 w - - 16 56",
-            "evaluation": null
+            "evaluation": 7900
         },
         {
             "board_fen": "8/8/8/2p1k3/8/5B2/3R2P1/5K2 b - - 0 56",
@@ -826,7 +822,7 @@
         },
         {
             "board_fen": "8/8/8/2p5/5k2/5B2/3R2P1/5K2 w - - 1 57",
-            "evaluation": null
+            "evaluation": 7800
         },
         {
             "board_fen": "8/8/8/2p5/5k2/5B2/4R1P1/5K2 b - - 2 57",
@@ -872,7 +868,7 @@
         },
         {
             "board_fen": "rnbqkbnr/ppppp2p/8/5pp1/4P3/6K1/PPPP1PPP/RNBQ1BNR w - - 4 5",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "rnbqkbnr/ppppp2p/8/5pp1/4PP2/6K1/PPPP2PP/RNBQ1BNR b - - 0 5",
@@ -880,7 +876,7 @@
         },
         {
             "board_fen": "rnbqkbnr/ppppp3/7p/5pp1/4PP2/6K1/PPPP2PP/RNBQ1BNR w - - 0 6",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "rnbqkbnr/ppppp3/7p/5pP1/4P3/6K1/PPPP2PP/RNBQ1BNR b - - 0 6",
@@ -888,7 +884,7 @@
         },
         {
             "board_fen": "rnbqkbnr/1pppp3/p6p/5pP1/4P3/6K1/PPPP2PP/RNBQ1BNR w - - 0 7",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "rnbqkbnr/1pppp3/p6p/5pP1/4P2K/8/PPPP2PP/RNBQ1BNR b - - 1 7",
@@ -896,11 +892,11 @@
         },
         {
             "board_fen": "rnbqkbnr/2ppp3/pp5p/5pP1/4P2K/8/PPPP2PP/RNBQ1BNR w - - 0 8",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "rnbqkbnr/2ppp3/pp5p/5pPK/4P3/8/PPPP2PP/RNBQ1BNR b - - 1 8",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "rnbqkb1r/2ppp3/pp3n1p/5pPK/4P3/8/PPPP2PP/RNBQ1BNR w - - 2 9",
@@ -908,7 +904,7 @@
         },
         {
             "board_fen": "rnbqkb1r/2ppp3/pp3nKp/5pP1/4P3/8/PPPP2PP/RNBQ1BNR b - - 3 9",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "1nbqkb1r/r1ppp3/pp3nKp/5pP1/4P3/8/PPPP2PP/RNBQ1BNR w - - 4 10",
@@ -916,7 +912,7 @@
         },
         {
             "board_fen": "1nbqkb1r/r1ppp3/pp3nKp/5PP1/8/8/PPPP2PP/RNBQ1BNR b - - 0 10",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "1nbqkb1r/r1ppp3/1p3nKp/p4PP1/8/8/PPPP2PP/RNBQ1BNR w - - 0 11",
@@ -924,7 +920,7 @@
         },
         {
             "board_fen": "1nbqkb1r/r1ppp3/1p3nKp/p4PP1/8/2N5/PPPP2PP/R1BQ1BNR b - - 1 11",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "2bqkb1r/r1ppp3/np3nKp/p4PP1/8/2N5/PPPP2PP/R1BQ1BNR w - - 2 12",
@@ -932,7 +928,7 @@
         },
         {
             "board_fen": "2bqkb1r/r1ppp3/np3nKp/p4PP1/7P/2N5/PPPP2P1/R1BQ1BNR b - - 0 12",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "2bqkb1r/1rppp3/np3nKp/p4PP1/7P/2N5/PPPP2P1/R1BQ1BNR w - - 1 13",
@@ -940,7 +936,7 @@
         },
         {
             "board_fen": "2bqkb1r/1rppp3/np3nKp/p4PPP/8/2N5/PPPP2P1/R1BQ1BNR b - - 0 13",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "2bqkb1r/1rppp3/np4Kp/p4PPn/8/2N5/PPPP2P1/R1BQ1BNR w - - 0 14",
@@ -948,7 +944,7 @@
         },
         {
             "board_fen": "2bqkb1r/1rppp3/np4Kp/p4PPn/8/2N2N2/PPPP2P1/R1BQ1B1R b - - 1 14",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "2bqkb1r/1rppp3/np3nKp/p4PP1/8/2N2N2/PPPP2P1/R1BQ1B1R w - - 2 15",
@@ -956,7 +952,7 @@
         },
         {
             "board_fen": "2bqkb1r/1rppp3/np3nKp/p4PP1/3N4/2N5/PPPP2P1/R1BQ1B1R b - - 3 15",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "2bqkb1r/r1ppp3/np3nKp/p4PP1/3N4/2N5/PPPP2P1/R1BQ1B1R w - - 4 16",
@@ -964,7 +960,7 @@
         },
         {
             "board_fen": "2bqkb1r/r1ppp3/np3nKp/pB3PP1/3N4/2N5/PPPP2P1/R1BQ3R b - - 5 16",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "2bqkb1r/r1ppp3/np3nK1/pB3Pp1/3N4/2N5/PPPP2P1/R1BQ3R w - - 0 17",
@@ -972,7 +968,7 @@
         },
         {
             "board_fen": "2bqkb1r/r1ppp3/np3nK1/pB3Pp1/3N4/2NP4/PPP3P1/R1BQ3R b - - 0 17",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "2bqkb1r/r1ppp3/np4K1/pB1n1Pp1/3N4/2NP4/PPP3P1/R1BQ3R w - - 1 18",
@@ -992,7 +988,7 @@
         },
         {
             "board_fen": "2bqk2r/r1ppp1bR/np4K1/pB3Pp1/3NN3/3Pn3/PPP3P1/R1BQ4 w - - 5 20",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "2bqk2r/r1ppp1bR/np4K1/pB3Pp1/3NN3/1P1Pn3/P1P3P1/R1BQ4 b - - 0 20",
@@ -1000,7 +996,7 @@
         },
         {
             "board_fen": "2bqk2r/r1ppp2R/np4Kb/pB3Pp1/3NN3/1P1Pn3/P1P3P1/R1BQ4 w - - 1 21",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "2bqk2r/r1ppp2R/np4Kb/pB3Pp1/3NN3/1P1Pn3/PBP3P1/R2Q4 b - - 2 21",
@@ -1008,15 +1004,15 @@
         },
         {
             "board_fen": "2bq1k1r/r1ppp2R/np4Kb/pB3Pp1/3NN3/1P1Pn3/PBP3P1/R2Q4 w - - 3 22",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bq1k1r/r1ppp2R/np2N1Kb/pB3Pp1/4N3/1P1Pn3/PBP3P1/R2Q4 b - - 4 22",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "2bq2kr/r1ppp2R/np2N1Kb/pB3Pp1/4N3/1P1Pn3/PBP3P1/R2Q4 w - - 5 23",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bq2kr/r1ppp2R/np2N1Kb/pB3Pp1/4N1Q1/1P1Pn3/PBP3P1/R7 b - - 6 23",
@@ -1024,7 +1020,7 @@
         },
         {
             "board_fen": "2bq2kr/r1ppp2R/np2N1Kb/pB3Pp1/4N1Q1/1P1P4/PBP3P1/R4n2 w - - 7 24",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bq2kr/r1ppp2R/np2NPKb/pB4p1/4N1Q1/1P1P4/PBP3P1/R4n2 b - - 0 24",
@@ -1032,7 +1028,7 @@
         },
         {
             "board_fen": "r1bq2kr/2ppp2R/np2NPKb/pB4p1/4N1Q1/1P1P4/PBP3P1/R4n2 w - - 1 25",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "r1bq2kr/2ppp2R/np3PKb/pB4p1/3NN1Q1/1P1P4/PBP3P1/R4n2 b - - 2 25",
@@ -1040,7 +1036,7 @@
         },
         {
             "board_fen": "r1bq1bkr/2ppp2R/np3PK1/pB4p1/3NN1Q1/1P1P4/PBP3P1/R4n2 w - - 3 26",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "r1bq1bkr/2ppp2R/np3PK1/pB3Np1/4N1Q1/1P1P4/PBP3P1/R4n2 b - - 4 26",
@@ -1048,31 +1044,31 @@
         },
         {
             "board_fen": "r1bq1bkr/2ppp2R/np3PK1/1B3Np1/p3N1Q1/1P1P4/PBP3P1/R4n2 w - - 0 27",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "r1bq1bkr/2ppP2R/np4K1/1B3Np1/p3N1Q1/1P1P4/PBP3P1/R4n2 b - - 0 27",
-            "evaluation": null
+            "evaluation": 9200
         },
         {
             "board_fen": "r1bq1bkr/2ppP2R/1p4K1/1Bn2Np1/p3N1Q1/1P1P4/PBP3P1/R4n2 w - - 1 28",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "r1bq1bkr/2ppP3/1p4KR/1Bn2Np1/p3N1Q1/1P1P4/PBP3P1/R4n2 b - - 2 28",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "2bq1bkr/2ppP3/rp4KR/1Bn2Np1/p3N1Q1/1P1P4/PBP3P1/R4n2 w - - 3 29",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bq1bkr/2ppP3/rp3BKR/1Bn2Np1/p3N1Q1/1P1P4/P1P3P1/R4n2 b - - 4 29",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "2bq1bkr/2ppP3/rp3BKR/1Bn2Np1/p3N1Q1/1P1P2n1/P1P3P1/R7 w - - 5 30",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bq1bkr/2ppP2R/rp3BK1/1Bn2Np1/p3N1Q1/1P1P2n1/P1P3P1/R7 b - - 6 30",
@@ -1080,23 +1076,23 @@
         },
         {
             "board_fen": "2bq1bkr/r1ppP2R/1p3BK1/1Bn2Np1/p3N1Q1/1P1P2n1/P1P3P1/R7 w - - 7 31",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bq1bkr/r1ppP1R1/1p3BK1/1Bn2Np1/p3N1Q1/1P1P2n1/P1P3P1/R7 b - - 8 31",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "2bq2kr/r1ppP1b1/1p3BK1/1Bn2Np1/p3N1Q1/1P1P2n1/P1P3P1/R7 w - - 0 32",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "2bqQ1kr/r1pp2b1/1p3BK1/1Bn2Np1/p3N1Q1/1P1P2n1/P1P3P1/R7 b - - 0 32",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "2bqQbkr/r1pp4/1p3BK1/1Bn2Np1/p3N1Q1/1P1P2n1/P1P3P1/R7 w - - 1 33",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bqQbkr/r1pp4/1p3BKN/1Bn3p1/p3N1Q1/1P1P2n1/P1P3P1/R7 b - - 2 33",
@@ -1112,7 +1108,7 @@
         },
         {
             "board_fen": "2bqQb2/r1pp3k/1p3B1r/1Bn3K1/p3N1Q1/1P1P2n1/P1P3P1/R7 w - - 1 35",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "2bqQb2/r1pp3k/1p3B1r/1Bn3K1/p3N1Q1/1P1P2n1/P1P3P1/5R2 b - - 2 35",
@@ -1120,7 +1116,7 @@
         },
         {
             "board_fen": "2bqQ3/r1ppb2k/1p3B1r/1Bn3K1/p3N1Q1/1P1P2n1/P1P3P1/5R2 w - - 3 36",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bqQ3/r1ppb2k/1p3B1r/1Bn3K1/p3NRQ1/1P1P2n1/P1P3P1/8 b - - 4 36",
@@ -1128,15 +1124,15 @@
         },
         {
             "board_fen": "2bqQ3/r1ppb2k/np3B1r/1B4K1/p3NRQ1/1P1P2n1/P1P3P1/8 w - - 5 37",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bqQ3/r1ppb2k/np3B1r/1B4K1/p4RQ1/1P1P2n1/P1P2NP1/8 b - - 6 37",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "2bqQ3/r2pb2k/np3B1r/1Bp3K1/p4RQ1/1P1P2n1/P1P2NP1/8 w - - 0 38",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2bqQ3/r2pb2k/np3B1r/1Bp3K1/p4R1Q/1P1P2n1/P1P2NP1/8 b - - 1 38",
@@ -1144,23 +1140,23 @@
         },
         {
             "board_fen": "3qQ3/rb1pb2k/np3B1r/1Bp3K1/p4R1Q/1P1P2n1/P1P2NP1/8 w - - 2 39",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "3qQ3/rb1pb2k/np3B1r/1Bp3K1/p4RNQ/1P1P2n1/P1P3P1/8 b - - 3 39",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "3qQ3/rb1pb2k/np3B1r/1Bp3K1/p4RNQ/1P1P4/P1P1n1P1/8 w - - 4 40",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "3qQ3/rb1pb2k/np3B1r/2p3K1/p1B2RNQ/1P1P4/P1P1n1P1/8 b - - 5 40",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "1n1qQ3/rb1pb2k/1p3B1r/2p3K1/p1B2RNQ/1P1P4/P1P1n1P1/8 w - - 6 41",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/rb1pb2k/1p3B1r/2p3K1/p1B2RN1/1P1P4/P1P1nQP1/8 b - - 7 41",
@@ -1168,7 +1164,7 @@
         },
         {
             "board_fen": "1n1qQ3/rb1pb2k/5B1r/1pp3K1/p1B2RN1/1P1P4/P1P1nQP1/8 w - - 0 42",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/rb1pb2k/4BB1r/1pp3K1/p4RN1/1P1P4/P1P1nQP1/8 b - - 1 42",
@@ -1176,15 +1172,15 @@
         },
         {
             "board_fen": "1n1qQ3/1b1pb2k/r3BB1r/1pp3K1/p4RN1/1P1P4/P1P1nQP1/8 w - - 2 43",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b1pb2k/r4B1r/1pp2BK1/p4RN1/1P1P4/P1P1nQP1/8 b - - 3 43",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b1pb2k/r4Br1/1pp2BK1/p4RN1/1P1P4/P1P1nQP1/8 w - - 4 44",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b1pb2k/r4Br1/1pp2B1K/p4RN1/1P1P4/P1P1nQP1/8 b - - 5 44",
@@ -1192,7 +1188,7 @@
         },
         {
             "board_fen": "1n1qQ3/1b1pb2k/r4Br1/1pp2B1K/5RN1/pP1P4/P1P1nQP1/8 w - - 0 45",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b1pb2k/r4Br1/1pp4K/4BRN1/pP1P4/P1P1nQP1/8 b - - 1 45",
@@ -1200,7 +1196,7 @@
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/r4Br1/1ppp3K/4BRN1/pP1P4/P1P1nQP1/8 w - - 0 46",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/r4Br1/1ppp1R1K/4B1N1/pP1P4/P1P1nQP1/8 b - - 1 46",
@@ -1208,7 +1204,7 @@
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1ppp1R1K/4B1N1/pP1P4/P1P1nQP1/8 w - - 2 47",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1ppp1R1K/4B3/pP1PN3/P1P1nQP1/8 b - - 3 47",
@@ -1216,7 +1212,7 @@
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1ppp1R1K/4B3/pP1PN3/P1P2QP1/2n5 w - - 4 48",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1ppp1R1K/4B1P1/pP1PN3/P1P2Q2/2n5 b - - 0 48",
@@ -1224,7 +1220,7 @@
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1ppp1R1K/4B1P1/pP1PN3/P1P1nQ2/8 w - - 1 49",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1ppp1RPK/4B3/pP1PN3/P1P1nQ2/8 b - - 0 49",
@@ -1232,7 +1228,7 @@
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1pp2RPK/3pB3/pP1PN3/P1P1nQ2/8 w - - 0 50",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/3r1Br1/1pp2RPK/3pB3/pP1PNQ2/P1P1n3/8 b - - 1 50",
@@ -1240,7 +1236,7 @@
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/2r2Br1/1pp2RPK/3pB3/pP1PNQ2/P1P1n3/8 w - - 2 51",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1qQ3/1b2b2k/2r2Br1/1pp2RPK/3pB1Q1/pP1PN3/P1P1n3/8 b - - 3 51",
@@ -1248,7 +1244,7 @@
         },
         {
             "board_fen": "1nbqQ3/4b2k/2r2Br1/1pp2RPK/3pB1Q1/pP1PN3/P1P1n3/8 w - - 4 52",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1nbqQ3/4b2k/2r2Br1/1pp3PK/3pB1Q1/pP1PN3/P1P1nR2/8 b - - 5 52",
@@ -1256,55 +1252,55 @@
         },
         {
             "board_fen": "1nb1Q3/2q1b2k/2r2Br1/1pp3PK/3pB1Q1/pP1PN3/P1P1nR2/8 w - - 6 53",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1nb1Q3/2q1b2k/2r2Br1/1pp3PK/3pB1Q1/pP1PN3/P1P1n2R/8 b - - 7 53",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "1nb1Q3/4b2k/2r2Br1/1pp3PK/3pB1Q1/pP1PN1q1/P1P1n2R/8 w - - 8 54",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1nb1Q3/4b2k/2r2Br1/1pp3PK/3pB1QR/pP1PN1q1/P1P1n3/8 b - - 9 54",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "1nb1Q3/4b2k/2r2Br1/2p3PK/1p1pB1QR/pP1PN1q1/P1P1n3/8 w - - 0 55",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1nb1Q3/4b2k/2r2Br1/2p2NPK/1p1pB1QR/pP1P2q1/P1P1n3/8 b - - 1 55",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "1n2Q3/3bb2k/2r2Br1/2p2NPK/1p1pB1QR/pP1P2q1/P1P1n3/8 w - - 2 56",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n2Q3/3bb2k/2r2Br1/2pB1NPK/1p1p2QR/pP1P2q1/P1P1n3/8 b - - 3 56",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "1n2Q3/3bb2k/2r2Br1/2pB1NPK/1p1p2QR/pP1P1q2/P1P1n3/8 w - - 4 57",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n2Q1B1/3bb2k/2r2Br1/2p2NPK/1p1p2QR/pP1P1q2/P1P1n3/8 b - - 5 57",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "1n2Q1r1/3bb2k/2r2B2/2p2NPK/1p1p2QR/pP1P1q2/P1P1n3/8 w - - 0 58",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "1n4r1/3bbQ1k/2r2B2/2p2NPK/1p1p2QR/pP1P1q2/P1P1n3/8 b - - 1 58",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n6/3bbQrk/2r2B2/2p2NPK/1p1p2QR/pP1P1q2/P1P1n3/8 w - - 2 59",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n6/3bb1rk/2r2BQ1/2p2NPK/1p1p2QR/pP1P1q2/P1P1n3/8 b - - 3 59",
@@ -1312,23 +1308,23 @@
         },
         {
             "board_fen": "1n5k/3bb1r1/2r2BQ1/2p2NPK/1p1p2QR/pP1P1q2/P1P1n3/8 w - - 4 60",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n5k/3bb1r1/2r2BQK/2p2NP1/1p1p2QR/pP1P1q2/P1P1n3/8 b - - 5 60",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "1n1b3k/3b2r1/2r2BQK/2p2NP1/1p1p2QR/pP1P1q2/P1P1n3/8 w - - 6 61",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1b3k/3b2r1/2rN1BQK/2p3P1/1p1p2QR/pP1P1q2/P1P1n3/8 b - - 7 61",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "1n1b3k/3b2r1/2rN1BQK/2pq2P1/1p1p2QR/pP1P4/P1P1n3/8 w - - 8 62",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1b3k/3bB1r1/2rN2QK/2pq2P1/1p1p2QR/pP1P4/P1P1n3/8 b - - 9 62",
@@ -1336,23 +1332,23 @@
         },
         {
             "board_fen": "1n1b3k/3bB1r1/2rN2QK/2p3P1/1p1p2QR/pP1P4/P1P1n3/7q w - - 10 63",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1b3k/3bB1r1/2rNQ1QK/2p3P1/1p1p3R/pP1P4/P1P1n3/7q b - - 11 63",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "1n1b3k/3bB1r1/2rNQ1QK/2p3P1/1p1p3R/pP1P3q/P1P1n3/8 w - - 12 64",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1b3k/3bBQr1/2rN2QK/2p3P1/1p1p3R/pP1P3q/P1P1n3/8 b - - 13 64",
-            "evaluation": null
+            "evaluation": -9200
         },
         {
             "board_fen": "1n1b3k/3bBQr1/2rN2QK/2p2qP1/1p1p3R/pP1P4/P1P1n3/8 w - - 14 65",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1b1Q1k/3bB1r1/2rN2QK/2p2qP1/1p1p3R/pP1P4/P1P1n3/8 b - - 15 65",
@@ -1360,15 +1356,11 @@
         },
         {
             "board_fen": "1n1b1Qrk/3bB3/2rN2QK/2p2qP1/1p1p3R/pP1P4/P1P1n3/8 w - - 16 66",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1n1b1Qrk/3bB2Q/2rN3K/2p2qP1/1p1p3R/pP1P4/P1P1n3/8 b - - 17 66",
-            "evaluation": null
-        },
-        {
-            "board_fen": "1n1b1Qrk/3bB2q/2rN3K/2p3P1/1p1p3R/pP1P4/P1P1n3/8 w - - 0 67",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -1972,11 +1964,7 @@
         },
         {
             "board_fen": "4r1k1/pb3ppp/8/8/1P3R2/P4qP1/5Q2/5RK1 b - - 1 34",
-            "evaluation": null
-        },
-        {
-            "board_fen": "4r1k1/pb3ppp/8/8/1P3R2/P5P1/5Q2/5RKq w - - 2 35",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -2158,63 +2146,59 @@
         },
         {
             "board_fen": "r2k3r/pp1b2pp/2pQ4/4R3/8/8/PPP2PPP/R5K1 b - - 0 23",
-            "evaluation": null
+            "evaluation": 9200
         },
         {
             "board_fen": "r1k4r/pp1b2pp/2pQ4/4R3/8/8/PPP2PPP/R5K1 w - - 1 24",
-            "evaluation": null
+            "evaluation": 9200
         },
         {
             "board_fen": "r1k4r/pp1bR1pp/2pQ4/8/8/8/PPP2PPP/R5K1 b - - 2 24",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "r1kr4/pp1bR1pp/2pQ4/8/8/8/PPP2PPP/R5K1 w - - 3 25",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "r1kr4/pp1bR1pp/2pQ4/8/8/8/PPP2PPP/3R2K1 b - - 4 25",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "r1kr4/1p1bR1pp/2pQ4/p7/8/8/PPP2PPP/3R2K1 w - - 0 26",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "r1kr4/1p1R2pp/2pQ4/p7/8/8/PPP2PPP/3R2K1 b - - 0 26",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "r1k5/1p1r2pp/2pQ4/p7/8/8/PPP2PPP/3R2K1 w - - 0 27",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "r1k5/1p1Q2pp/2p5/p7/8/8/PPP2PPP/3R2K1 b - - 0 27",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "rk6/1p1Q2pp/2p5/p7/8/8/PPP2PPP/3R2K1 w - - 1 28",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "rk1Q4/1p4pp/2p5/p7/8/8/PPP2PPP/3R2K1 b - - 2 28",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "r2Q4/kp4pp/2p5/p7/8/8/PPP2PPP/3R2K1 w - - 3 29",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "r7/kp4pp/2p5/Q7/8/8/PPP2PPP/3R2K1 b - - 0 29",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "rk6/1p4pp/2p5/Q7/8/8/PPP2PPP/3R2K1 w - - 1 30",
-            "evaluation": null
-        },
-        {
-            "board_fen": "rk1R4/1p4pp/2p5/Q7/8/8/PPP2PPP/6K1 b - - 2 30",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -2432,19 +2416,19 @@
         },
         {
             "board_fen": "R7/4kppp/1q6/2rPp3/2p1P3/2Q3P1/1n2BP1P/6K1 w - - 2 28",
-            "evaluation": null
+            "evaluation": 8900
         },
         {
             "board_fen": "R7/4kppp/1q6/2rPQ3/2p1P3/6P1/1n2BP1P/6K1 b - - 0 28",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "R7/3k1ppp/1q6/2rPQ3/2p1P3/6P1/1n2BP1P/6K1 w - - 1 29",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "R7/3k1ppp/1q6/2rPQ3/2p1P1B1/6P1/1n3P1P/6K1 b - - 2 29",
-            "evaluation": null
+            "evaluation": 9700
         }
     ],
     [
@@ -3716,19 +3700,19 @@
         },
         {
             "board_fen": "8/7P/5r2/6RK/6P1/5k2/8/8 w - - 15 82",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "8/7P/5r2/5R1K/6P1/5k2/8/8 b - - 16 82",
-            "evaluation": null
+            "evaluation": 8700
         },
         {
             "board_fen": "8/7P/5r2/5R1K/6P1/6k1/8/8 w - - 17 83",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "8/7P/5R2/7K/6P1/6k1/8/8 b - - 0 83",
-            "evaluation": null
+            "evaluation": 9600
         }
     ],
     [
@@ -4162,35 +4146,35 @@
         },
         {
             "board_fen": "k7/7p/P4KP1/8/8/3n1p1P/6P1/6B1 w - - 0 55",
-            "evaluation": null
+            "evaluation": 8900
         },
         {
             "board_fen": "k7/6Pp/P4K2/8/8/3n1p1P/6P1/6B1 b - - 0 55",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "1k6/6Pp/P4K2/8/8/3n1p1P/6P1/6B1 w - - 1 56",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "1k4Q1/7p/P4K2/8/8/3n1p1P/6P1/6B1 b - - 0 56",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "6Q1/2k4p/P4K2/8/8/3n1p1P/6P1/6B1 w - - 1 57",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "8/2k2Q1p/P4K2/8/8/3n1p1P/6P1/6B1 b - - 2 57",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "8/5Q1p/P1k2K2/8/8/3n1p1P/6P1/6B1 w - - 3 58",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "8/7p/P1k2K2/8/2Q5/3n1p1P/6P1/6B1 b - - 4 58",
-            "evaluation": null
+            "evaluation": 9600
         }
     ],
     [
@@ -4408,15 +4392,15 @@
         },
         {
             "board_fen": "6rk/p2R3n/1p2p2Q/8/4N3/4P2b/PP3P1P/R5K1 w - - 1 28",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "6rk/p2R3n/1p2p2Q/8/8/4P1Nb/PP3P1P/R5K1 b - - 2 28",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "6rk/p2R3n/1p2p2Q/5b2/8/4P1N1/PP3P1P/R5K1 w - - 3 29",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "6rk/p2R3n/1p2p2Q/5b2/8/4P1N1/PP3P1P/R4K2 b - - 4 29",
@@ -4424,19 +4408,15 @@
         },
         {
             "board_fen": "4r2k/p2R3n/1p2p2Q/5b2/8/4P1N1/PP3P1P/R4K2 w - - 5 30",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "4r2k/p2R3n/1p2p2Q/5N2/8/4P3/PP3P1P/R4K2 b - - 0 30",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "4r1k1/p2R3n/1p2p2Q/5N2/8/4P3/PP3P1P/R4K2 w - - 1 31",
-            "evaluation": null
-        },
-        {
-            "board_fen": "4r1k1/p2R2Qn/1p2p3/5N2/8/4P3/PP3P1P/R4K2 b - - 2 31",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -4742,7 +4722,7 @@
         },
         {
             "board_fen": "2r5/1r3p2/pPk5/P1BpPR2/2bK4/8/7P/6R1 w - - 1 39",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "2r5/1r3p2/pPk2R2/P1BpP3/2bK4/8/7P/6R1 b - - 2 39",
@@ -4750,19 +4730,19 @@
         },
         {
             "board_fen": "2r5/1r3p2/pP3R2/PkBpP3/2bK4/8/7P/6R1 w - - 3 40",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "2r5/1r3p2/pP3R2/PkBpP3/2bK4/8/7P/1R6 b - - 4 40",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "2r5/1r3p2/pP3R2/k1BpP3/2bK4/8/7P/1R6 w - - 0 41",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "2r5/1r3p2/pP6/k1BpP3/2bK4/5R2/7P/1R6 b - - 1 41",
-            "evaluation": null
+            "evaluation": 9700
         }
     ],
     [
@@ -5128,7 +5108,7 @@
         },
         {
             "board_fen": "8/8/8/6R1/2k3P1/p7/3pK3/2b5 b - - 0 46",
-            "evaluation": null
+            "evaluation": -8700
         },
         {
             "board_fen": "8/8/8/6R1/2k3P1/8/p2pK3/2b5 w - - 0 47",
@@ -5168,19 +5148,15 @@
         },
         {
             "board_fen": "8/8/8/6P1/k2R4/b7/3pK3/q7 b - - 1 51",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "8/8/8/6P1/k2q4/b7/3pK3/8 w - - 0 52",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "8/8/6P1/8/k2q4/b7/3pK3/8 b - - 0 52",
-            "evaluation": null
-        },
-        {
-            "board_fen": "8/8/6P1/8/k2q4/b7/4K3/3q4 w - - 0 53",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -5374,39 +5350,39 @@
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpp/r2nP3/2n5/P2R2N1/1P1Q2PP/1KBR4 w - - 2 25",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpQ/r2nP3/2n5/P2R2N1/1P4PP/1KBR4 b - - 0 25",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpQ/r2nP3/8/n2R2N1/1P4PP/1KBR4 w - - 0 26",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpQ/r2nP3/8/R5N1/1P4PP/1KBR4 b - - 0 26",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpQ/r3P3/8/R1n3N1/1P4PP/1KBR4 w - - 1 27",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpQ/r3P3/8/2R3N1/1P4PP/1KBR4 b - - 0 27",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpQ/4P3/8/2R3N1/1P4PP/rKBR4 w - - 1 28",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "1q3rk1/5p2/2p1pPpQ/4P3/8/2R3N1/1P4PP/K1BR4 b - - 0 28",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "5rk1/q4p2/2p1pPpQ/4P3/8/2R3N1/1P4PP/K1BR4 w - - 1 29",
-            "evaluation": null
+            "evaluation": 9700
         }
     ],
     [
@@ -5720,7 +5696,7 @@
         },
         {
             "board_fen": "6k1/1p3pp1/3Q4/1q4N1/8/4P1P1/5PPK/8 w - - 0 40",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "6k1/1p3pp1/3Q4/1q6/8/4PNP1/5PPK/8 b - - 1 40",
@@ -5832,15 +5808,15 @@
         },
         {
             "board_fen": "8/5pp1/6k1/8/5PPQ/4P3/3q2PK/8 w - - 1 54",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "8/5pp1/6k1/7Q/5PP1/4P3/3q2PK/8 b - - 2 54",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "8/5pp1/5k2/7Q/5PP1/4P3/3q2PK/8 w - - 3 55",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "8/5pp1/5k2/5Q2/5PP1/4P3/3q2PK/8 b - - 4 55",
@@ -5952,7 +5928,7 @@
         },
         {
             "board_fen": "8/8/4k1p1/4P1K1/5PP1/8/8/8 w - - 1 69",
-            "evaluation": null
+            "evaluation": 8200
         },
         {
             "board_fen": "8/8/4k1K1/4P3/5PP1/8/8/8 b - - 0 69",
@@ -5972,103 +5948,103 @@
         },
         {
             "board_fen": "8/8/5K2/4PP2/4k1P1/8/8/8 b - - 2 71",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "8/8/5K2/4PP2/6P1/5k2/8/8 w - - 3 72",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "8/8/4PK2/5P2/6P1/5k2/8/8 b - - 0 72",
-            "evaluation": null
+            "evaluation": 9100
         },
         {
             "board_fen": "8/8/4PK2/5P2/5kP1/8/8/8 w - - 1 73",
-            "evaluation": null
+            "evaluation": 9100
         },
         {
             "board_fen": "8/8/4PK2/5PP1/5k2/8/8/8 b - - 0 73",
-            "evaluation": null
+            "evaluation": 9200
         },
         {
             "board_fen": "8/8/4PK2/5PP1/8/6k1/8/8 w - - 1 74",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "8/8/4PKP1/5P2/8/6k1/8/8 b - - 0 74",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "8/8/4PKP1/5P2/5k2/8/8/8 w - - 1 75",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "8/6P1/4PK2/5P2/5k2/8/8/8 b - - 0 75",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/6P1/4PK2/5P2/6k1/8/8/8 w - - 1 76",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "8/6P1/4P1K1/5P2/6k1/8/8/8 b - - 2 76",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/6P1/4P1K1/5P2/5k2/8/8/8 w - - 3 77",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/6P1/4PPK1/8/5k2/8/8/8 b - - 0 77",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/6P1/4PPK1/8/8/5k2/8/8 w - - 1 78",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/5PP1/4P1K1/8/8/5k2/8/8 b - - 0 78",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/5PP1/4P1K1/8/5k2/8/8/8 w - - 1 79",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "8/4PPP1/6K1/8/5k2/8/8/8 b - - 0 79",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "8/4PPP1/6K1/4k3/8/8/8/8 w - - 1 80",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "6Q1/4PP2/6K1/4k3/8/8/8/8 b - - 0 80",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "6Q1/4PP2/6K1/8/5k2/8/8/8 w - - 1 81",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "5Q2/4PP2/6K1/8/5k2/8/8/8 b - - 2 81",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "5Q2/4PP2/6K1/8/6k1/8/8/8 w - - 3 82",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "4Q3/4PP2/6K1/8/6k1/8/8/8 b - - 4 82",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "4Q3/4PP2/6K1/8/7k/8/8/8 w - - 5 83",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "8/3QPP2/6K1/8/7k/8/8/8 b - - 6 83",
-            "evaluation": null
+            "evaluation": 9700
         }
     ],
     [
@@ -6872,55 +6848,55 @@
         },
         {
             "board_fen": "2r5/8/8/2R5/1PK5/8/8/1k6 w - - 13 71",
-            "evaluation": null
+            "evaluation": 9200
         },
         {
             "board_fen": "2R5/8/8/8/1PK5/8/8/1k6 b - - 0 71",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "2R5/8/8/8/1PK5/8/1k6/8 w - - 1 72",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "8/2R5/8/8/1PK5/8/1k6/8 b - - 2 72",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/2R5/8/8/1PK5/8/8/1k6 w - - 3 73",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "8/2R5/8/1P6/2K5/8/8/1k6 b - - 0 73",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/2R5/8/1P6/2K5/8/1k6/8 w - - 1 74",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "8/2R5/1P6/8/2K5/8/1k6/8 b - - 0 74",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "8/2R5/1P6/8/2K5/8/k7/8 w - - 1 75",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "8/1PR5/8/8/2K5/8/k7/8 b - - 0 75",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "8/1PR5/8/8/2K5/8/8/k7 w - - 1 76",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "1Q6/2R5/8/8/2K5/8/8/k7 b - - 0 76",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "1Q6/2R5/8/8/2K5/8/k7/8 w - - 1 77",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -7118,19 +7094,15 @@
         },
         {
             "board_fen": "2rR4/4bk1p/p3pp2/Nb2p3/8/5N2/5PPP/2R3K1 b - - 0 25",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "3R4/4bk1p/p3pp2/Nb2p3/8/5N2/5PPP/2r3K1 w - - 0 26",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "3R4/4bk1p/p3pp2/Nb2p3/8/8/5PPP/2r1N1K1 b - - 1 26",
-            "evaluation": null
-        },
-        {
-            "board_fen": "3R4/4bk1p/p3pp2/Nb2p3/8/8/5PPP/4r1K1 w - - 0 27",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -7848,11 +7820,11 @@
         },
         {
             "board_fen": "3rr3/pb4kp/1p1q2p1/4p1N1/1PQ2p1P/P1N1n3/2P2PP1/3RR1K1 w - - 1 25",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "3rr3/pb3Qkp/1p1q2p1/4p1N1/1P3p1P/P1N1n3/2P2PP1/3RR1K1 b - - 2 25",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -8242,7 +8214,7 @@
         },
         {
             "board_fen": "8/r3k3/5p2/3KpB2/4P2p/4b3/8/8 b - - 3 49",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "8/4k3/5p2/3KpB2/4P2p/4b3/r7/8 w - - 4 50",
@@ -8266,15 +8238,15 @@
         },
         {
             "board_fen": "8/4k3/5p2/4pB2/2KbP2p/8/7r/8 b - - 9 52",
-            "evaluation": null
+            "evaluation": -8200
         },
         {
             "board_fen": "8/4k3/5p2/4pB2/2KbP3/7p/7r/8 w - - 0 53",
-            "evaluation": null
+            "evaluation": -7700
         },
         {
             "board_fen": "8/4k3/5p2/4pB2/3bP3/3K3p/7r/8 b - - 1 53",
-            "evaluation": null
+            "evaluation": -8100
         },
         {
             "board_fen": "8/4k3/5p2/4pB2/3bP3/3K3p/8/7r w - - 2 54",
@@ -8282,15 +8254,15 @@
         },
         {
             "board_fen": "8/4k3/5p2/4p3/3bP3/3K3B/8/7r b - - 0 54",
-            "evaluation": null
+            "evaluation": -8400
         },
         {
             "board_fen": "8/4k3/5p2/4p3/3bP3/3K3r/8/8 w - - 0 55",
-            "evaluation": null
+            "evaluation": -8400
         },
         {
             "board_fen": "8/4k3/5p2/4p3/2KbP3/7r/8/8 b - - 1 55",
-            "evaluation": null
+            "evaluation": -9200
         },
         {
             "board_fen": "8/4k3/5p2/4p3/2KbP3/2r5/8/8 w - - 2 56",
@@ -8298,11 +8270,7 @@
         },
         {
             "board_fen": "8/4k3/5p2/3Kp3/3bP3/2r5/8/8 b - - 3 56",
-            "evaluation": null
-        },
-        {
-            "board_fen": "8/4k3/5p2/2rKp3/3bP3/8/8/8 w - - 4 57",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -8690,7 +8658,7 @@
         },
         {
             "board_fen": "6k1/1p5p/p5p1/4P3/1P3K2/2BR1p2/1P2p2P/6q1 b - - 2 41",
-            "evaluation": null
+            "evaluation": -8900
         },
         {
             "board_fen": "6k1/1p5p/p5p1/4P3/1P3K2/2BR1p2/1P5P/4q1q1 w - - 0 42",
@@ -8714,15 +8682,15 @@
         },
         {
             "board_fen": "6k1/1p5p/p5p1/4P3/1P6/4RK2/1P3p1P/4q3 b - - 1 44",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "6k1/1p5p/p5p1/4P3/1P6/4RK2/1P5P/4qq2 w - - 0 45",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "6k1/1p5p/p5p1/4P3/1P2K3/4R3/1P5P/4qq2 b - - 1 45",
-            "evaluation": null
+            "evaluation": -9800
         }
     ],
     [
@@ -9554,35 +9522,35 @@
         },
         {
             "board_fen": "5r2/7P/6R1/4kPK1/6P1/8/8/8 w - - 1 64",
-            "evaluation": null
+            "evaluation": 9200
         },
         {
             "board_fen": "5rR1/7P/8/4kPK1/6P1/8/8/8 b - - 2 64",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "6R1/5r1P/8/4kPK1/6P1/8/8/8 w - - 3 65",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "6RQ/5r2/8/4kPK1/6P1/8/8/8 b - - 0 65",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "6RQ/5r2/8/5PK1/4k1P1/8/8/8 w - - 1 66",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "4R2Q/5r2/8/5PK1/4k1P1/8/8/8 b - - 2 66",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "4R2Q/5r2/8/5PK1/6P1/5k2/8/8 w - - 3 67",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "4R3/5r2/8/5PK1/6P1/5k1Q/8/8 b - - 4 67",
-            "evaluation": null
+            "evaluation": 9600
         }
     ],
     [
@@ -10080,7 +10048,7 @@
         },
         {
             "board_fen": "5R2/8/8/8/PPk5/5K2/4p3/8 w - - 2 63",
-            "evaluation": null
+            "evaluation": 8300
         },
         {
             "board_fen": "4R3/8/8/8/PPk5/5K2/4p3/8 b - - 3 63",
@@ -10112,83 +10080,83 @@
         },
         {
             "board_fen": "8/8/k7/8/P3R3/4K3/8/8 w - - 5 67",
-            "evaluation": null
+            "evaluation": 9100
         },
         {
             "board_fen": "8/8/k7/8/P3R3/3K4/8/8 b - - 6 67",
-            "evaluation": null
+            "evaluation": 9100
         },
         {
             "board_fen": "8/k7/8/8/P3R3/3K4/8/8 w - - 7 68",
-            "evaluation": null
+            "evaluation": 9100
         },
         {
             "board_fen": "8/k7/8/8/P3R3/2K5/8/8 b - - 8 68",
-            "evaluation": null
+            "evaluation": 9100
         },
         {
             "board_fen": "8/1k6/8/8/P3R3/2K5/8/8 w - - 9 69",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "8/1k6/8/8/P3R3/1K6/8/8 b - - 10 69",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "1k6/8/8/8/P3R3/1K6/8/8 w - - 11 70",
-            "evaluation": null
+            "evaluation": 9200
         },
         {
             "board_fen": "1k6/8/8/8/PK2R3/8/8/8 b - - 12 70",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "2k5/8/8/8/PK2R3/8/8/8 w - - 13 71",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "2k5/8/8/4R3/PK6/8/8/8 b - - 14 71",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "1k6/8/8/4R3/PK6/8/8/8 w - - 15 72",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "1k6/8/8/1R6/PK6/8/8/8 b - - 16 72",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "8/2k5/8/1R6/PK6/8/8/8 w - - 17 73",
-            "evaluation": null
+            "evaluation": 9300
         },
         {
             "board_fen": "8/2k5/8/R7/PK6/8/8/8 b - - 18 73",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "8/3k4/8/R7/PK6/8/8/8 w - - 19 74",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "8/3k4/8/3R4/PK6/8/8/8 b - - 20 74",
-            "evaluation": null
+            "evaluation": 8900
         },
         {
             "board_fen": "8/4k3/8/3R4/PK6/8/8/8 w - - 21 75",
-            "evaluation": null
+            "evaluation": 9000
         },
         {
             "board_fen": "8/4k3/8/8/PK6/3R4/8/8 b - - 22 75",
-            "evaluation": null
+            "evaluation": 8900
         },
         {
             "board_fen": "4k3/8/8/8/PK6/3R4/8/8 w - - 23 76",
-            "evaluation": null
+            "evaluation": 9100
         },
         {
             "board_fen": "4k3/8/8/8/PK6/4R3/8/8 b - - 24 76",
-            "evaluation": null
+            "evaluation": 8900
         }
     ],
     [
@@ -11556,27 +11524,23 @@
         },
         {
             "board_fen": "r3qrk1/pp1R2pp/2p1p3/4PpB1/P1n1N3/6Q1/1P3PPP/5RK1 w - f6 0 21",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "r3qrk1/pp4Rp/2p1p3/4PpB1/P1n1N3/6Q1/1P3PPP/5RK1 b - - 0 21",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "r3qr1k/pp4Rp/2p1p3/4PpB1/P1n1N3/6Q1/1P3PPP/5RK1 w - - 1 22",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "r3qr1k/pp4Rp/2p1pB2/4Pp2/P1n1N3/6Q1/1P3PPP/5RK1 b - - 2 22",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "r3qr1k/pp4Rp/2p1pB2/4P3/P1n1p3/6Q1/1P3PPP/5RK1 w - - 0 23",
-            "evaluation": null
-        },
-        {
-            "board_fen": "r3qrRk/pp5p/2p1pB2/4P3/P1n1p3/6Q1/1P3PPP/5RK1 b - - 1 23",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -11798,19 +11762,15 @@
         },
         {
             "board_fen": "5rk1/pp4p1/3p3b/2pN3P/7q/1Q6/PP4K1/R7 b - - 2 28",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "6k1/pp4p1/3p3b/2pN3P/7q/1Q6/PP3rK1/R7 w - - 3 29",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "6k1/pp4p1/3p3b/2pN3P/7q/1Q6/PP3r2/R5K1 b - - 4 29",
-            "evaluation": null
-        },
-        {
-            "board_fen": "6k1/pp4p1/3p3b/2pN3P/8/1Q6/PP3r1q/R5K1 w - - 5 30",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -12192,7 +12152,7 @@
         },
         {
             "board_fen": "8/p3bkp1/8/3p1p2/3r2P1/5K2/P7/8 b - - 0 48",
-            "evaluation": null
+            "evaluation": -8500
         },
         {
             "board_fen": "8/p3bk2/6p1/3p1p2/3r2P1/5K2/P7/8 w - - 0 49",
@@ -12200,7 +12160,7 @@
         },
         {
             "board_fen": "8/p3bk2/6p1/3p1P2/3r4/5K2/P7/8 b - - 0 49",
-            "evaluation": null
+            "evaluation": -8300
         },
         {
             "board_fen": "8/p3bk2/8/3p1p2/3r4/5K2/P7/8 w - - 0 50",
@@ -12216,211 +12176,211 @@
         },
         {
             "board_fen": "8/p3bk2/8/3p1p2/4r3/5K2/P7/8 b - - 3 51",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p4k2/3b4/3p1p2/4r3/5K2/P7/8 w - - 4 52",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p4k2/3b4/3p1p2/4r3/8/P4K2/8 b - - 5 52",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p7/3bk3/3p1p2/4r3/8/P4K2/8 w - - 6 53",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p7/3bk3/3p1p2/4r3/5K2/P7/8 b - - 7 53",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p2k4/3b4/3p1p2/4r3/5K2/P7/8 w - - 8 54",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p2k4/3b4/3p1p2/4r3/8/P4K2/8 b - - 9 54",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p2kb3/8/3p1p2/4r3/8/P4K2/8 w - - 10 55",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p2kb3/8/3p1p2/P3r3/8/5K2/8 b - - 0 55",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/2k5/3p1p2/P3r3/8/5K2/8 w - - 1 56",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/2k5/P2p1p2/4r3/8/5K2/8 b - - 0 56",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/8/Pk1p1p2/4r3/8/5K2/8 w - - 1 57",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/P7/1k1p1p2/4r3/8/5K2/8 b - - 0 57",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/k7/3p1p2/4r3/8/5K2/8 w - - 0 58",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/k7/3p1p2/4r3/5K2/8/8 b - - 1 58",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/8/1k1p1p2/4r3/5K2/8/8 w - - 2 59",
-            "evaluation": null
+            "evaluation": -9200
         },
         {
             "board_fen": "8/p3b3/8/1k1p1p2/4r3/8/5K2/8 b - - 3 59",
-            "evaluation": null
+            "evaluation": -9200
         },
         {
             "board_fen": "8/p3b3/2k5/3p1p2/4r3/8/5K2/8 w - - 4 60",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/2k5/3p1p2/4r3/5K2/8/8 b - - 5 60",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/3k4/3p1p2/4r3/5K2/8/8 w - - 6 61",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/3k4/3p1p2/4r3/8/5K2/8 b - - 7 61",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/p3b3/8/3pkp2/4r3/8/5K2/8 w - - 8 62",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p3b3/8/3pkp2/4r3/5K2/8/8 b - - 9 62",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p3b3/8/4kp2/3pr3/5K2/8/8 w - - 0 63",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/4kp2/3pr3/8/5K2/8 b - - 1 63",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/4kp2/3p4/4r3/5K2/8 w - - 2 64",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/p3b3/8/4kp2/3p4/4r3/6K1/8 b - - 3 64",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/5p2/3pk3/4r3/6K1/8 w - - 4 65",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/5p2/3pk3/4r3/5K2/8 b - - 5 65",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/8/3pkp2/4r3/5K2/8 w - - 0 66",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/8/3pkp2/4r3/8/5K2 b - - 1 66",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "5b2/p7/8/8/3pkp2/4r3/8/5K2 w - - 2 67",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "5b2/p7/8/8/3pkp2/4r3/5K2/8 b - - 3 67",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/8/3pkp2/4r3/5K2/8 w - - 4 68",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/p3b3/8/8/3pkp2/4r3/8/5K2 b - - 5 68",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "3b4/p7/8/8/3pkp2/4r3/8/5K2 w - - 6 69",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "3b4/p7/8/8/3pkp2/4r3/5K2/8 b - - 7 69",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "3b4/8/p7/8/3pkp2/4r3/5K2/8 w - - 0 70",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "3b4/8/p7/8/3pkp2/4r3/8/5K2 b - - 1 70",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "8/2b5/p7/8/3pkp2/4r3/8/5K2 w - - 2 71",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "8/2b5/p7/8/3pkp2/4r3/5K2/8 b - - 3 71",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "1b6/8/p7/8/3pkp2/4r3/5K2/8 w - - 4 72",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "1b6/8/p7/8/3pkp2/4r3/8/5K2 b - - 5 72",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "8/b7/p7/8/3pkp2/4r3/8/5K2 w - - 6 73",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/b7/p7/8/3pkp2/4r3/5K2/8 b - - 7 73",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/b7/p7/8/4kp2/3pr3/5K2/8 w - - 0 74",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "8/b7/p7/8/4kp2/3pr3/8/5K2 b - - 1 74",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "1b6/8/p7/8/4kp2/3pr3/8/5K2 w - - 2 75",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "1b6/8/p7/8/4kp2/3pr3/6K1/8 b - - 3 75",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "1b6/8/p7/8/4kp2/3p1r2/6K1/8 w - - 4 76",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "1b6/8/p7/8/4kp2/3p1r2/7K/8 b - - 5 76",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "1b6/8/p7/8/4kp2/3p2r1/7K/8 w - - 6 77",
-            "evaluation": null
+            "evaluation": -9700
         }
     ],
     [
@@ -12558,27 +12518,23 @@
         },
         {
             "board_fen": "r3r1k1/1bqn1p1p/pp4pQ/2ppP1B1/Pb1P4/3B1N2/1P3PPP/R2R2K1 w - - 4 18",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "r3r1k1/1bqn1p1p/pp3BpQ/2ppP3/Pb1P4/3B1N2/1P3PPP/R2R2K1 b - - 5 18",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "r3r1k1/1bq2p1p/pp3npQ/2ppP3/Pb1P4/3B1N2/1P3PPP/R2R2K1 w - - 0 19",
-            "evaluation": null
+            "evaluation": 9600
         },
         {
             "board_fen": "r3r1k1/1bq2p1p/pp3PpQ/2pp4/Pb1P4/3B1N2/1P3PPP/R2R2K1 b - - 0 19",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "r3r1k1/1bq2p1p/pp3PpQ/3p4/Pb1p4/3B1N2/1P3PPP/R2R2K1 w - - 0 20",
-            "evaluation": null
-        },
-        {
-            "board_fen": "r3r1k1/1bq2pQp/pp3Pp1/3p4/Pb1p4/3B1N2/1P3PPP/R2R2K1 b - - 1 20",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -13046,11 +13002,7 @@
         },
         {
             "board_fen": "4B2k/1p4pp/1p6/5R2/8/P1PnP2P/1P1r1PPB/1K5R w - - 1 28",
-            "evaluation": null
-        },
-        {
-            "board_fen": "4BR1k/1p4pp/1p6/8/8/P1PnP2P/1P1r1PPB/1K5R b - - 2 28",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -13188,15 +13140,15 @@
         },
         {
             "board_fen": "r3k2r/1p1nBpbp/p5p1/1b1P3n/1Q6/2N2N2/P4PPP/4R1K1 w kq - 2 18",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "r3k2r/1p1n1pbp/p4Bp1/1b1P3n/1Q6/2N2N2/P4PPP/4R1K1 b kq - 3 18",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "r3k2r/1p3pbp/p4Bp1/1b1Pn2n/1Q6/2N2N2/P4PPP/4R1K1 w kq - 4 19",
-            "evaluation": null
+            "evaluation": 9900
         }
     ],
     [
@@ -13514,7 +13466,7 @@
         },
         {
             "board_fen": "8/1p2kppp/p4P2/4P3/4r3/PK6/8/8 b - - 0 40",
-            "evaluation": null
+            "evaluation": -8500
         },
         {
             "board_fen": "8/1p2kp1p/p4p2/4P3/4r3/PK6/8/8 w - - 0 41",
@@ -13522,83 +13474,79 @@
         },
         {
             "board_fen": "8/1p2kp1p/p4P2/8/4r3/PK6/8/8 b - - 0 41",
-            "evaluation": null
+            "evaluation": -9000
         },
         {
             "board_fen": "8/1p3p1p/p4k2/8/4r3/PK6/8/8 w - - 0 42",
-            "evaluation": null
+            "evaluation": -9100
         },
         {
             "board_fen": "8/1p3p1p/p4k2/8/4r3/P1K5/8/8 b - - 1 42",
-            "evaluation": null
+            "evaluation": -9100
         },
         {
             "board_fen": "8/1p3p1p/p7/4k3/4r3/P1K5/8/8 w - - 2 43",
-            "evaluation": null
+            "evaluation": -9200
         },
         {
             "board_fen": "8/1p3p1p/p7/4k3/4r3/P2K4/8/8 b - - 3 43",
-            "evaluation": null
+            "evaluation": -9200
         },
         {
             "board_fen": "8/1p5p/p7/4kp2/4r3/P2K4/8/8 w - - 0 44",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/1p5p/p7/4kp2/4r3/P7/3K4/8 b - - 1 44",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4rp2/P7/3K4/8 w - - 0 45",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4rp2/P2K4/8/8 b - - 1 45",
-            "evaluation": null
+            "evaluation": -9400
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P2K1p2/8/8 w - - 0 46",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P4p2/3K4/8 b - - 1 46",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P7/3K1p2/8 w - - 0 47",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P2K4/5p2/8 b - - 1 47",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P2K4/8/5q2 w - - 0 48",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P1K5/8/5q2 b - - 1 48",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P1K2q2/8/8 w - - 2 49",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "8/1p5p/p7/4k3/4r3/P4q2/2K5/8 b - - 3 49",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "8/1p5p/p7/4k3/8/P4q2/2K1r3/8 w - - 4 50",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "8/1p5p/p7/4k3/8/P4q2/4r3/3K4 b - - 5 50",
-            "evaluation": null
-        },
-        {
-            "board_fen": "8/1p5p/p7/4k3/8/P7/4r3/3K1q2 w - - 6 51",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -13892,11 +13840,11 @@
         },
         {
             "board_fen": "4Q3/6pp/p4rk1/1p6/4p3/2P1NqPb/PP3P1P/4R1K1 b - - 19 37",
-            "evaluation": null
+            "evaluation": -9100
         },
         {
             "board_fen": "4Q3/6pp/p4r1k/1p6/4p3/2P1NqPb/PP3P1P/4R1K1 w - - 20 38",
-            "evaluation": null
+            "evaluation": -8900
         }
     ],
     [
@@ -14222,19 +14170,19 @@
         },
         {
             "board_fen": "r7/8/p5k1/1p1p1pp1/1BpP4/R1P2P2/1R4PK/2n1r3 b - - 5 41",
-            "evaluation": null
+            "evaluation": -9700
         },
         {
             "board_fen": "7r/8/p5k1/1p1p1pp1/1BpP4/R1P2P2/1R4PK/2n1r3 w - - 6 42",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "7r/8/p5k1/1p1p1pp1/1BpP4/R1P2PK1/1R4P1/2n1r3 b - - 7 42",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "7r/8/p5k1/1p1p2p1/1BpP1p2/R1P2PK1/1R4P1/2n1r3 w - - 0 43",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -15450,7 +15398,7 @@
         },
         {
             "board_fen": "5rr1/2p5/1p1p3k/p1nPp2P/2P1Ppbq/2P2P2/P1B3QN/1R1R2K1 b - - 0 28",
-            "evaluation": null
+            "evaluation": -9300
         },
         {
             "board_fen": "5rr1/2p5/1p1p3k/p1nPp2P/2P1Pp1q/2P2P1b/P1B3QN/1R1R2K1 w - - 1 29",
@@ -15458,27 +15406,23 @@
         },
         {
             "board_fen": "5rr1/2p5/1p1p2Qk/p1nPp2P/2P1Pp1q/2P2P1b/P1B4N/1R1R2K1 b - - 2 29",
-            "evaluation": null
+            "evaluation": -9500
         },
         {
             "board_fen": "5r2/2p5/1p1p2rk/p1nPp2P/2P1Pp1q/2P2P1b/P1B4N/1R1R2K1 w - - 0 30",
-            "evaluation": null
+            "evaluation": -9600
         },
         {
             "board_fen": "5r2/2p5/1p1p2Pk/p1nPp3/2P1Pp1q/2P2P1b/P1B4N/1R1R2K1 b - - 0 30",
-            "evaluation": null
+            "evaluation": -9800
         },
         {
             "board_fen": "5r2/2p5/1p1p2Pk/p1nPp3/2P1Pp2/2P2Pqb/P1B4N/1R1R2K1 w - - 1 31",
-            "evaluation": null
+            "evaluation": -9900
         },
         {
             "board_fen": "5r2/2p5/1p1p2Pk/p1nPp3/2P1Pp2/2P2Pqb/P1B4N/1R1R3K b - - 2 31",
-            "evaluation": null
-        },
-        {
-            "board_fen": "5r2/2p5/1p1p2Pk/p1nPp3/2P1Pp2/2P2P1b/P1B3qN/1R1R3K w - - 3 32",
-            "evaluation": null
+            "evaluation": -9900
         }
     ],
     [
@@ -15784,7 +15728,7 @@
         },
         {
             "board_fen": "8/p3Rpk1/p3p1p1/P2pP1Pp/1P3PNP/1r2PK2/8/8 w - h6 0 39",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "8/p3Rpk1/p3p1pN/P2pP1Pp/1P3P1P/1r2PK2/8/8 b - - 1 39",
@@ -15832,35 +15776,31 @@
         },
         {
             "board_fen": "3k4/p7/p3R1PN/P3P2p/1r3P1P/4pK2/8/8 w - - 0 45",
-            "evaluation": null
+            "evaluation": 9400
         },
         {
             "board_fen": "3k4/p5P1/p3R2N/P3P2p/1r3P1P/4pK2/8/8 b - - 0 45",
-            "evaluation": null
+            "evaluation": 9500
         },
         {
             "board_fen": "3k4/p5P1/p3R2N/P3P2p/1r3P1P/5K2/4p3/8 w - - 0 46",
-            "evaluation": null
+            "evaluation": 9700
         },
         {
             "board_fen": "3k2Q1/p7/p3R2N/P3P2p/1r3P1P/5K2/4p3/8 b - - 0 46",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "6Q1/p2k4/p3R2N/P3P2p/1r3P1P/5K2/4p3/8 w - - 1 47",
-            "evaluation": null
+            "evaluation": 9800
         },
         {
             "board_fen": "8/p2k1Q2/p3R2N/P3P2p/1r3P1P/5K2/4p3/8 b - - 2 47",
-            "evaluation": null
+            "evaluation": 9900
         },
         {
             "board_fen": "2k5/p4Q2/p3R2N/P3P2p/1r3P1P/5K2/4p3/8 w - - 3 48",
-            "evaluation": null
-        },
-        {
-            "board_fen": "2k1R3/p4Q2/p6N/P3P2p/1r3P1P/5K2/4p3/8 b - - 4 48",
-            "evaluation": null
+            "evaluation": 9900
         }
     ]
 ]

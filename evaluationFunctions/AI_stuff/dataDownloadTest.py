@@ -22,14 +22,11 @@ def fetch_lichess_games(username="magnuscarlsen", num_games=10):
             continue
         if game.get("analysis") is None:
             continue
+
+        # print(f"Game data: {game}")  # Print game data for inspection
         
         moves = game.get("moves", "").split()
         evaluations = game.get("analysis", [])
-        
-        #print("\n")
-        #print(f"Moves: {moves}")  # Print moves for inspection
-        #print(f"Evaluations: {evaluations}")  # Print evaluations for inspection
-
         
         board = chess.Board()
         game_data = []
@@ -39,8 +36,24 @@ def fetch_lichess_games(username="magnuscarlsen", num_games=10):
                 board.push_san(move)  # Apply the move to the board
                 
                 # Get the evaluation if it exists
-                eval_data = evaluations[i] if i < len(evaluations) else None
-                eval_value = eval_data.get("eval") if eval_data and "eval" in eval_data else None
+                eval_data = evaluations[i] if i < len(evaluations) else None # json/dictionary
+
+                
+                
+                if "eval" in eval_data:
+                    eval_value = eval_data["eval"]
+                elif "mate" in eval_data:
+                    print(eval_data["mate"])
+                    if eval_data["mate"] > 0:
+                        eval_value = 10000 - eval_data["mate"] * 100
+                    else:
+                        eval_value = -10000 + eval_data["mate"] * -100
+                else:
+                    print(eval_data)
+                    if board.is_checkmate():
+                        eval_value = -10000 if board.turn else 10000  # Negative for losing, positive for winning
+                    else:
+                        continue
                 
                 # Add board state and evaluation to the list
                 game_data.append({
@@ -49,6 +62,7 @@ def fetch_lichess_games(username="magnuscarlsen", num_games=10):
                 })
             except Exception as e:
                 print(f"Error processing move {move}: {e}")
+                #print(f"Game json: {game}")
                 break
         
         data.append(game_data)
@@ -64,6 +78,6 @@ def save_to_file(data, filename="lichess_games.json"):
     except Exception as e:
         print(f"Error saving data to file: {e}")
 
-
-lichess_data = fetch_lichess_games("skiddol", 1000)
-save_to_file(lichess_data, "lichess_games_skiddol.json")
+# skiddol luka3916 MW1966
+lichess_data = fetch_lichess_games("MW1966", 1000)
+save_to_file(lichess_data, "lichess_games_MW1966.json")
