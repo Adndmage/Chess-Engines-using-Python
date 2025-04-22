@@ -1,8 +1,7 @@
 import chess
 
-board = chess.Board()
+board = chess.Board("3k4/8/8/8/4K3/8/8/8 w - - 0 1")
 print(board)
-print(f"Turn: {board.turn}")
 
 print(f"Legal Moves: \n{board.legal_moves}\n")
 
@@ -18,5 +17,6 @@ board.push_san("Nf6")
 board.push_san("Qxf7")
 
 print(f"Checkmate is {board.is_checkmate()}")
+print(f"Turn: {board.turn == chess.BLACK}")
 print(board)
 print(board.fen())

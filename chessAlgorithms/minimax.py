@@ -11,7 +11,7 @@ def search(board):
 
     for move in board.legal_moves:
         board.push(move)
-        evaluation = -minimax(board, -100000, 100000, 3)
+        evaluation = -minimax(board, -100000, 100000, 4)
         board.pop()
 
         if evaluation > best_evaluation:
@@ -21,7 +21,7 @@ def search(board):
     return best_move
 
 def minimax(board, alpha, beta, depth):
-    if depth == 0 or board.is_game_over():
+    if depth == 0:
         return calculate_material_value(board)
     
     best_evaluation = -100000

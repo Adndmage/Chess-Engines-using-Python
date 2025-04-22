@@ -9,7 +9,7 @@ from evaluationFunctions.calculateAIEvalf import evaluate_board
 from chessAlgorithms.humanPlayer import human_player
 from chessAlgorithms.randomPlayer import random_player
 from chessAlgorithms.bestNextMove import bestNextMovePlayer
-from chessAlgorithms.minimax import search, minimax_ai
+from chessAlgorithms.minimax import search
 
 
 """
