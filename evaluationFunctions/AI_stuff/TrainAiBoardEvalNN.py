@@ -118,6 +118,25 @@ class SimpleChessNet(nn.Module):
         x = self.fc(x)       # Fully connected layer
         return x
 
+class BiggerChessNet(nn.Module):
+    def __init__(self):
+        super(BiggerChessNet, self).__init__()
+        # Flatten the 12x8x8 tensor into a single vector (768 features)
+        self.flatten = nn.Flatten()
+        # First fully connected layer: 768 input features -> 10 nodes
+        self.fc1 = nn.Linear(12 * 8 * 8, 10)
+        # Second fully connected layer: 10 nodes -> 10 nodes
+        self.fc2 = nn.Linear(10, 10)
+        # Output layer: 10 nodes -> 1 output
+        self.fc3 = nn.Linear(10, 1)
+
+    def forward(self, x):
+        x = self.flatten(x)  # Flatten the input tensor
+        x = torch.relu(self.fc1(x))  # Apply ReLU activation after the first layer
+        x = torch.relu(self.fc2(x))  # Apply ReLU activation after the second layer
+        x = self.fc3(x)  # Final output layer
+        return x
+
 import random
 
 def test_model_on_samples(model, dataset, criterion, num_samples=10):
@@ -164,7 +183,9 @@ if __name__ == "__main__":
     json_file_path4 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
     # Path to save/load the model
-    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\model.pth"
+    #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\model.pth"
+    # biggerModel.pth
+    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\biggerModel.pth"
 
     # Load the dataset
     dataset = load_dataset_toupleList(json_file_path1)
@@ -174,7 +195,8 @@ if __name__ == "__main__":
     
 
     # Initialize the network
-    model = SimpleChessNet()
+    #model = SimpleChessNet()
+    model = BiggerChessNet()
 
     # Check if a saved model exists
     if os.path.exists(model_file_path):
