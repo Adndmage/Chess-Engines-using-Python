@@ -1,7 +1,7 @@
 import torch
 import chess
 import numpy as np
-from AI_stuff.TrainAiBoardEvalNN import SimpleChessNet, boardToTensor
+from .AI_stuff.TrainAiBoardEvalNN import SimpleChessNet, boardToTensor
 import os
 
 # Dynamically determine the path to the model file

@@ -17,7 +17,7 @@ def search(board):
 
     for move in board.legal_moves:
         board.push(move)
-        evaluation = -minimax(board, -100000, 100000, 4)
+        evaluation = -minimax(board, -100000, 100000, 3)
         board.pop()
 
         if evaluation > best_evaluation:
@@ -31,7 +31,7 @@ def minimax(board, alpha, beta, depth):
     search_count += 1
 
     if depth == 0:
-        return calculate_material_value(board)
+        return quiescence_search(board, alpha, beta)
     
     best_evaluation = -100000
 
@@ -50,14 +50,26 @@ def minimax(board, alpha, beta, depth):
     
     return best_evaluation
 
-# def quiescence_search(board, alpha, beta):
-#     evaluation = calculate_material_value(board)
-#     best_evaluation = evaluation
+def quiescence_search(board, alpha, beta):
+    stand_pat = calculate_material_value(board)
+    best_evaluation = stand_pat
 
-#     if evaluation >= beta:
-#         return evaluation
+    if stand_pat >= beta:
+        return stand_pat
     
-#     if alpha < evaluation:
-#         alpha = evaluation
+    if alpha < stand_pat:
+        alpha = stand_pat
     
-    
+    for move in [m for m in board.legal_moves if board.is_capture(m)]:
+        board.push(move)
+        evaluation = -quiescence_search(board, -beta, -alpha)
+        board.pop()
+
+        if evaluation >= beta:
+            return evaluation
+        
+        if evaluation > best_evaluation:
+            best_evaluation = evaluation
+            alpha = max(alpha, evaluation)
+        
+    return best_evaluation
