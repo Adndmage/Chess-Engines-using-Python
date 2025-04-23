@@ -5,6 +5,8 @@ import chess
 from random import choice
 from chessAlgorithms.moveOrdering import reorder_moves
 from evaluationFunctions.materialValue import calculate_material_value
+# from evaluationFunctions.calculateAIEvalf import evaluate_board
+from evaluationFunctions.calculateBigAIEvalf import evaluate_board
 
 search_count = 0
 
@@ -51,7 +53,7 @@ def minimax(board, alpha, beta, depth):
     return best_evaluation
 
 def quiescence_search(board, alpha, beta):
-    stand_pat = calculate_material_value(board)
+    stand_pat = evaluate_board(board)
     best_evaluation = stand_pat
 
     if stand_pat >= beta:
