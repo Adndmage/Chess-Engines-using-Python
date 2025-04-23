@@ -174,6 +174,21 @@ def test_model_on_samples(model, dataset, criterion, num_samples=10):
             # Print the results
             print(f"{actual:>10.6f} {predicted:>10.6f} {loss:>10.6f}")
 
+def augment_dataset_with_mirrored_positions(dataset):
+    """
+    Generate mirrored positions for the dataset.
+    :param dataset: A list of (chess.Board, evaluation) tuples.
+    :return: A list of mirrored (chess.Board, evaluation) tuples.
+    """
+    mirrored_positions = []
+    for board, evaluation in dataset:
+        # Create the mirrored position
+        mirrored_board = board.mirror()  # Flip the board
+        mirrored_evaluation = -evaluation  # Reverse the evaluation
+        mirrored_positions.append((mirrored_board, mirrored_evaluation))
+    
+    return mirrored_positions
+
 # Example usage
 if __name__ == "__main__":
     # Path to the JSON file
@@ -193,6 +208,8 @@ if __name__ == "__main__":
     dataset += load_dataset_toupleList(json_file_path3)
     dataset += load_dataset_toupleList(json_file_path4)
     
+    # Augment the dataset with mirrored positions
+    dataset += augment_dataset_with_mirrored_positions(dataset)
 
     # Initialize the network
     #model = SimpleChessNet()
