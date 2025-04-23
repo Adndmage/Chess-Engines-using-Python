@@ -17,6 +17,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from torch.utils.data import DataLoader, Dataset, random_split
 
 import os  # For checking if the model file exists
 
@@ -66,43 +67,70 @@ def load_dataset_toupleList(file_path):
             dataset.append((chess.Board(fen), evaluation/1000)) # to touple and Normalize evaluation
     return dataset
 
-def train_model(model, dataset, criterion, optimizer, epochs=10):
+# Custom Dataset for batching
+class ChessDataset(Dataset):
+    def __init__(self, dataset):
+        self.dataset = dataset
+
+    def __len__(self):
+        return len(self.dataset)
+
+    def __getitem__(self, idx):
+        board, evaluation = self.dataset[idx]
+        input_tensor = boardToTensor(board)
+        input_tensor = torch.tensor(input_tensor, dtype=torch.float32)
+        evaluation_tensor = torch.tensor([evaluation], dtype=torch.float32)
+        return input_tensor, evaluation_tensor
+
+# Enable GPU
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f"Using device: {device}")
+
+def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10):
     """
-    Train the model on the dataset for a specified number of epochs.
+    Train the model using DataLoader for batching and GPU acceleration, with validation.
     :param model: The neural network model.
-    :param dataset: A list of (board, evaluation) tuples.
+    :param train_loader: DataLoader for the training dataset.
+    :param val_loader: DataLoader for the validation dataset.
     :param criterion: Loss function.
     :param optimizer: Optimizer.
     :param epochs: Number of epochs to train.
     """
+    model.to(device)  # Move model to GPU
     for epoch in range(epochs):
         print(f"Epoch {epoch + 1}/{epochs}")
-        total_loss = 0.0
+        model.train()  # Set model to training mode
+        total_train_loss = 0.0
 
-        # Shuffle the dataset at the start of each epoch
-        np.random.shuffle(dataset)
-
-        for board, evaluation in dataset:
-            # Convert board to tensor
-            input_tensor = boardToTensor(board)
-            input_tensor = torch.tensor(input_tensor, dtype=torch.float32).unsqueeze(0)  # Add batch dimension
-            evaluation_tensor = torch.tensor([evaluation], dtype=torch.float32).unsqueeze(1)  # Match output shape
+        # Training loop
+        for inputs, targets in train_loader:
+            inputs, targets = inputs.to(device, non_blocking=True), targets.to(device, non_blocking=True)
 
             # Forward pass
-            output = model(input_tensor)
-            loss = criterion(output, evaluation_tensor)
+            outputs = model(inputs)
+            loss = criterion(outputs, targets)
 
             # Backward pass and optimization
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
-            # Accumulate loss
-            total_loss += loss.item()
+            total_train_loss += loss.item() * len(inputs)
 
-        # Print average loss for the epoch
-        print(f"Average Loss: {total_loss / len(dataset):.6f}")
+        # Validation loop
+        model.eval()  # Set model to evaluation mode
+        total_val_loss = 0.0
+        with torch.no_grad():
+            for inputs, targets in val_loader:
+                inputs, targets = inputs.to(device, non_blocking=True), targets.to(device, non_blocking=True)
+                outputs = model(inputs)
+                loss = criterion(outputs, targets)
+                total_val_loss += loss.item() * len(inputs)
 
+        # Print average losses for the epoch
+        avg_train_loss = total_train_loss / len(train_loader.dataset)
+        avg_val_loss = total_val_loss / len(val_loader.dataset)
+        print(f"Train Loss: {avg_train_loss:.6f}, Validation Loss: {avg_val_loss:.6f}")
 
 # Define the neural network
 class SimpleChessNet(nn.Module):
@@ -147,7 +175,7 @@ def test_model_on_samples(model, dataset, criterion, num_samples=10):
     :param criterion: Loss function.
     :param num_samples: Number of random samples to test on.
     """
-    # Set the model to evaluation mode
+    model.to(device)  # Move model to GPU
     model.eval()
 
     # Randomly select samples from the dataset
@@ -159,16 +187,15 @@ def test_model_on_samples(model, dataset, criterion, num_samples=10):
 
     with torch.no_grad():  # Disable gradient computation
         for board, actual in random_samples:
-            # Convert board to tensor
-            input_tensor = boardToTensor(board)
-            input_tensor = torch.tensor(input_tensor, dtype=torch.float32).unsqueeze(0)  # Add batch dimension
+            # Convert board to tensor and move to GPU
+            input_tensor = torch.tensor(boardToTensor(board), dtype=torch.float32).unsqueeze(0).to(device)
 
             # Get the model's prediction
             predicted = model(input_tensor).item()
 
             # Calculate the loss for this sample
-            actual_tensor = torch.tensor([actual], dtype=torch.float32).unsqueeze(1)  # Match output shape
-            predicted_tensor = torch.tensor([predicted], dtype=torch.float32).unsqueeze(1)
+            actual_tensor = torch.tensor([actual], dtype=torch.float32).unsqueeze(1).to(device)
+            predicted_tensor = torch.tensor([predicted], dtype=torch.float32).unsqueeze(1).to(device)
             loss = criterion(predicted_tensor, actual_tensor).item()
 
             # Print the results
@@ -195,7 +222,9 @@ if __name__ == "__main__":
     json_file_path1 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_MW1966.json"
     json_file_path2 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_luka3916.json"
     json_file_path3 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_skiddol.json"
-    json_file_path4 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
+    json_file_path4 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_Truemasterme.json"
+    json_file_path5 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_Vlad_Lazarev79.json"
+    json_file_path_stockfish = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
     # Path to save/load the model
     #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\model.pth"
@@ -207,13 +236,25 @@ if __name__ == "__main__":
     dataset += load_dataset_toupleList(json_file_path2)
     dataset += load_dataset_toupleList(json_file_path3)
     dataset += load_dataset_toupleList(json_file_path4)
+    dataset += load_dataset_toupleList(json_file_path5)
+    dataset += load_dataset_toupleList(json_file_path_stockfish)
     
     # Augment the dataset with mirrored positions
     dataset += augment_dataset_with_mirrored_positions(dataset)
 
-    # Initialize the network
-    #model = SimpleChessNet()
-    model = BiggerChessNet()
+    # Split dataset into training and validation sets
+    train_size = int(0.8 * len(dataset))  # 80% for training
+    val_size = len(dataset) - train_size  # 20% for validation
+    train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
+
+    # Create DataLoaders for training and validation
+    batch_size = 256
+    num_workers = 4  # Use multiple workers for efficient data loading
+    train_loader = DataLoader(ChessDataset(train_dataset), batch_size=batch_size, shuffle=True, pin_memory=True, num_workers=num_workers)
+    val_loader = DataLoader(ChessDataset(val_dataset), batch_size=batch_size, shuffle=False, pin_memory=True, num_workers=num_workers)
+
+    # Initialize the network and move it to GPU
+    model = BiggerChessNet().to(device)
 
     # Check if a saved model exists
     if os.path.exists(model_file_path):
@@ -230,8 +271,8 @@ if __name__ == "__main__":
 
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-    # Train the model
-    train_model(model, dataset, criterion, optimizer, epochs=10)
+    # Train the model with training and validation sets
+    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10)
 
     # Save the model parameters after training
     print("Saving model parameters...")

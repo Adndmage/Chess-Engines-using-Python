@@ -63,7 +63,17 @@ if __name__ == "__main__":
     output_file = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
     # Example board position (starting position)
-    board_fen = "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2"
+    #board_fen = "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2"
 
     # Generate training data
-    generate_training_data(board_fen, output_file, stockfish_path, depth=20)
+    #generate_training_data(board_fen, output_file, stockfish_path, depth=20)
+
+
+    # do this, but with a list of fen boards:
+    board_fens = [
+        "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2"
+    ]
+
+    for board_fen in board_fens:
+        generate_training_data(board_fen, output_file, stockfish_path, depth=20)
+        print(f"Generated training data for FEN: {board_fen}")

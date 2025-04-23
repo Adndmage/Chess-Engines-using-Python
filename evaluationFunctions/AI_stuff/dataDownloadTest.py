@@ -78,6 +78,6 @@ def save_to_file(data, filename="lichess_games.json"):
     except Exception as e:
         print(f"Error saving data to file: {e}")
 
-# skiddol luka3916 MW1966
-lichess_data = fetch_lichess_games("MW1966", 1000)
-save_to_file(lichess_data, "lichess_games_MW1966.json")
+# skiddol luka3916 MW1966 Truemasterme Vlad_Lazarev79
+lichess_data = fetch_lichess_games("Vlad_Lazarev79", 1000)
+save_to_file(lichess_data, "lichess_games_Vlad_Lazarev79.json")
