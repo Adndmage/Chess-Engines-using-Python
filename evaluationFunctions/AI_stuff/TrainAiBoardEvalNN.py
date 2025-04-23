@@ -36,6 +36,7 @@ piece_map = {
     (chess.QUEEN, chess.BLACK): 10,
     (chess.KING, chess.BLACK): 11
 }
+
 def boardToTensor(board):
     # calculate numpy bitboard for each piecetype
     bitboardTensor = np.zeros((12, 8, 8)) # all zeros
@@ -248,10 +249,27 @@ if __name__ == "__main__":
     train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
 
     # Create DataLoaders for training and validation
-    batch_size = 256
-    num_workers = 4  # Use multiple workers for efficient data loading
-    train_loader = DataLoader(ChessDataset(train_dataset), batch_size=batch_size, shuffle=True, pin_memory=True, num_workers=num_workers)
-    val_loader = DataLoader(ChessDataset(val_dataset), batch_size=batch_size, shuffle=False, pin_memory=True, num_workers=num_workers)
+    batch_size = 1024  # Reduced batch size to balance GPU utilization and CPU workload
+    num_workers = 4  # Reduced number of workers to avoid overwhelming the CPU
+    prefetch_factor = 1  # Prefetch 2 batches per worker
+    train_loader = DataLoader(
+        ChessDataset(train_dataset),
+        batch_size=batch_size,
+        shuffle=True,
+        pin_memory=True,
+        num_workers=num_workers,
+        prefetch_factor=prefetch_factor,
+        persistent_workers=True
+    )
+    val_loader = DataLoader(
+        ChessDataset(val_dataset),
+        batch_size=batch_size,
+        shuffle=False,
+        pin_memory=True,
+        num_workers=num_workers,
+        prefetch_factor=prefetch_factor,
+        persistent_workers=True
+    )
 
     # Initialize the network and move it to GPU
     model = BiggerChessNet().to(device)
@@ -272,7 +290,7 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # Train the model with training and validation sets
-    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10)
+    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=20)
 
     # Save the model parameters after training
     print("Saving model parameters...")
