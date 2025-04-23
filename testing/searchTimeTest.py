@@ -7,7 +7,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from chessAlgorithms.minimax import search
 # r3k2r/p1pp1pb1/bn2pnp1/3PN3/1pq1P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1
 # Set up a board position
-fen = "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2"
+#fen = "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2"
+fen = "rnbqkbnr/pppppp1p/8/6p1/8/7N/PPPPPPPP/RNBQKB1R w KQkq - 0 2"
 board = chess.Board(fen)
 
 # With move reordering
