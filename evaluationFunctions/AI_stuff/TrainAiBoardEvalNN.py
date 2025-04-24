@@ -152,7 +152,7 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10
         print(f"{epoch},{train_loss:.6f},{val_loss:.6f}")
 
 # Define the neural network
-class SimpleChessNet(nn.Module):
+class SimpleChessNet(nn.Module): # 769 parameters
     def __init__(self):
         super(SimpleChessNet, self).__init__()
         # Flatten the 12x8x8 tensor into a single vector (768 features)
@@ -165,7 +165,7 @@ class SimpleChessNet(nn.Module):
         x = self.fc(x)       # Fully connected layer
         return x
 
-class BiggerChessNet(nn.Module):
+class BiggerChessNet(nn.Module): # 7921 parameters
     def __init__(self):
         super(BiggerChessNet, self).__init__()
         # Flatten the 12x8x8 tensor into a single vector (768 features)
@@ -182,6 +182,86 @@ class BiggerChessNet(nn.Module):
         x = torch.relu(self.fc1(x))  # Apply ReLU activation after the first layer
         x = torch.relu(self.fc2(x))  # Apply ReLU activation after the second layer
         x = self.fc3(x)  # Final output layer
+        return x
+
+class BiggestChessNet(nn.Module): # 51841 parameters
+    def __init__(self):
+        super(BiggestChessNet, self).__init__()
+        # Flatten the 12x8x8 tensor into a single vector (768 features)
+        self.flatten = nn.Flatten()
+        
+        # Fully connected layers
+        self.fc1 = nn.Linear(12 * 8 * 8, 64)  # First layer: 768 -> 64
+        self.fc2 = nn.Linear(64, 32)         # Second layer: 64 -> 32
+        self.fc3 = nn.Linear(32, 16)         # Third layer: 32 -> 16
+        self.fc4 = nn.Linear(16, 1)          # Output layer: 16 -> 1
+
+    def forward(self, x):
+        x = self.flatten(x)  # Flatten the input tensor
+        
+        # Apply ReLU activation after each layer
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = torch.relu(self.fc3(x))
+        
+        # Output layer (no activation function for regression)
+        x = self.fc4(x)
+        return x
+
+class BiggerThanBiggestChessNet(nn.Module): # 109313 parameters
+    def __init__(self):
+        super(BiggerThanBiggestChessNet, self).__init__()
+        # Flatten the 12x8x8 tensor into a single vector (768 features)
+        self.flatten = nn.Flatten()
+        
+        # Fully connected layers
+        self.fc1 = nn.Linear(12 * 8 * 8, 128)  # First layer: 768 -> 128
+        self.fc2 = nn.Linear(128, 64)         # Second layer: 128 -> 64
+        self.fc3 = nn.Linear(64, 32)         # Third layer: 64 -> 32
+        self.fc4 = nn.Linear(32, 16)          # Output layer: 32 -> 16
+        self.fc5 = nn.Linear(16, 1)          # Output layer: 16 -> 1
+
+    def forward(self, x):
+        x = self.flatten(x)  # Flatten the input tensor
+        
+        # Apply ReLU activation after each layer
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = torch.relu(self.fc3(x))
+        x = torch.relu(self.fc4(x))
+        
+        # Output layer (no activation function for regression)
+        x = self.fc5(x)
+        return x
+
+class LongerThanBiggestChessNet(nn.Module): # 57329 parameters
+    def __init__(self):
+        super(LongerThanBiggestChessNet, self).__init__()
+        # Flatten the 12x8x8 tensor into a single vector (768 features)
+        self.flatten = nn.Flatten()
+        
+        # Fully connected layers
+        self.fc1 = nn.Linear(12 * 8 * 8, 64)  # First layer: 768 -> 64
+        self.fc2 = nn.Linear(64, 64)         # Second layer: 64 -> 64
+        self.fc3 = nn.Linear(64, 32)         # Third layer: 64 -> 32
+        self.fc4 = nn.Linear(32, 32)         # Fourth layer: 32 -> 32
+        self.fc5 = nn.Linear(32, 16)         # Fifth layer: 32 -> 16
+        self.fc6 = nn.Linear(16, 16)         # Sixth layer: 16 -> 16
+        self.fc7 = nn.Linear(16, 1)          # Output layer: 16 -> 1
+
+    def forward(self, x):
+        x = self.flatten(x)  # Flatten the input tensor
+        
+        # Apply ReLU activation after each layer
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = torch.relu(self.fc3(x))
+        x = torch.relu(self.fc4(x))
+        x = torch.relu(self.fc5(x))
+        x = torch.relu(self.fc6(x))
+        
+        # Output layer (no activation function for regression)
+        x = self.fc7(x)
         return x
 
 import random
@@ -246,9 +326,15 @@ if __name__ == "__main__":
     json_file_path_stockfish = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
     # Path to save/load the model
-    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\simpelModel.pth"
+    # model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\simpelModel.pth"
     # biggerModel.pth
     #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\biggerModel.pth"
+    # biggestModel.pth
+    #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\biggestModel.pth"
+    # biggerThanBiggestModel.pth
+    #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\biggerThanBiggestModel.pth"
+    # longerThanBiggestModel.pth
+    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\longerThanBiggestModel.pth"
 
     # Load the dataset
     dataset = load_dataset_toupleList(json_file_path1)
@@ -290,7 +376,11 @@ if __name__ == "__main__":
     )
 
     # Initialize the network and move it to GPU
-    model = SimpleChessNet().to(device)
+    #model = SimpleChessNet().to(device)
+    #model = BiggerChessNet().to(device)
+    #model = BiggestChessNet().to(device)
+    #model = BiggerThanBiggestChessNet().to(device)
+    model = LongerThanBiggestChessNet().to(device)
 
     # Check if a saved model exists
     if os.path.exists(model_file_path):
