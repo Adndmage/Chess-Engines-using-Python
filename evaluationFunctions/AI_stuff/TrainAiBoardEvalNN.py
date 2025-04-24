@@ -98,6 +98,8 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10
     :param epochs: Number of epochs to train.
     """
     model.to(device)  # Move model to GPU
+    losses = []  # Store losses for each epoch
+
     for epoch in range(epochs):
         print(f"Epoch {epoch + 1}/{epochs}")
         model.train()  # Set model to training mode
@@ -128,10 +130,26 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10
                 loss = criterion(outputs, targets)
                 total_val_loss += loss.item() * len(inputs)
 
-        # Print average losses for the epoch
+        # Calculate average losses for the epoch
         avg_train_loss = total_train_loss / len(train_loader.dataset)
         avg_val_loss = total_val_loss / len(val_loader.dataset)
         print(f"Train Loss: {avg_train_loss:.6f}, Validation Loss: {avg_val_loss:.6f}")
+
+        # Store losses
+        losses.append((epoch + 1, avg_train_loss, avg_val_loss))
+
+        # Check for user input to exit training
+        """
+        user_input = input("Press Enter to continue training or type 'exit' to stop: ").strip().lower()
+        if user_input == 'exit':
+            print("Exiting training early...")
+            break
+        """
+
+    # Print losses as CSV
+    print("\nEpoch,Train Loss,Validation Loss")
+    for epoch, train_loss, val_loss in losses:
+        print(f"{epoch},{train_loss:.6f},{val_loss:.6f}")
 
 # Define the neural network
 class SimpleChessNet(nn.Module):
@@ -228,9 +246,9 @@ if __name__ == "__main__":
     json_file_path_stockfish = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
     # Path to save/load the model
-    #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\model.pth"
+    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\simpelModel.pth"
     # biggerModel.pth
-    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\biggerModel.pth"
+    #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\biggerModel.pth"
 
     # Load the dataset
     dataset = load_dataset_toupleList(json_file_path1)
@@ -272,7 +290,7 @@ if __name__ == "__main__":
     )
 
     # Initialize the network and move it to GPU
-    model = BiggerChessNet().to(device)
+    model = SimpleChessNet().to(device)
 
     # Check if a saved model exists
     if os.path.exists(model_file_path):
@@ -290,7 +308,7 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # Train the model with training and validation sets
-    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=20)
+    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=100)
 
     # Save the model parameters after training
     print("Saving model parameters...")
