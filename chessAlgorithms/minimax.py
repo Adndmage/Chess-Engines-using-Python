@@ -2,11 +2,28 @@
 minimax implementation to decide upon moves
 """
 import chess
+import time
 from random import choice
 from chessAlgorithms.moveOrdering import reorder_moves
 from evaluationFunctions.materialValue import calculate_material_value
 # from evaluationFunctions.calculateAIEvalf import evaluate_board
 # from evaluationFunctions.calculateBigAIEvalf import evaluate_board
+
+def iterative_deepening(board, max_depth, time_limit=None):  
+    start_time = time.time() if time_limit is not None else None
+
+    best_move = None
+
+    for depth in range(1, max_depth + 1):
+        if time_limit and (time.time() - start_time) > time_limit:
+            break
+
+        move = search(board, depth, -100000, 100000)[1]
+
+        if move is not None:
+            best_move = move
+        
+    return best_move
 
 def search(board, depth, alpha, beta):
     if depth == 0:
@@ -41,6 +58,11 @@ def search(board, depth, alpha, beta):
 
         if alpha >= beta:
             break
+        
+        # This is a fallback in case the search fails to find a move
+        if not best_move:
+            if board.legal_moves:
+                best_move = choice([move for move in board.legal_moves])
 
     return best_evaluation, best_move
 

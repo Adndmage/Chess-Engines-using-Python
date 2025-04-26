@@ -1,6 +1,6 @@
 import chess
 
-board = chess.Board("r1bqkbnr/ppp1pQpp/n7/3pN3/3P4/8/PPP1PPPP/RNB1KB1R b KQkq - 0 7")
+board = chess.Board("3k4/8/8/8/4K3/8/8/8 w - - 0 1")
 print(board)
 
 print(f"Legal Moves: \n{board.legal_moves}\n")
