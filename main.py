@@ -11,7 +11,7 @@ move_number = 0
 print(game.board)
 while not game.board.is_game_over():
     if game.board.turn:
-        game.human_move()
+        game.computer_move_NN()
     else:
         game.computer_move_minimax()
 

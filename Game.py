@@ -10,6 +10,7 @@ from chessAlgorithms.humanPlayer import human_player
 from chessAlgorithms.randomPlayer import random_player
 from chessAlgorithms.bestNextMove import bestNextMovePlayer
 from chessAlgorithms.minimax import search
+from chessAlgorithms.minimaxNN import searchNN
 
 
 """
@@ -32,7 +33,6 @@ class Game:
 		move = human_player(self.board)
 		self.board.push(move)
 
-
 	### computer player handeling
 	def computer_move_random(self):
 		move = random_player(self.board)
@@ -45,5 +45,10 @@ class Game:
 	
 	def computer_move_minimax(self):
 		move = search(self.board)
+		print(move)
+		self.board.push(move)
+
+	def computer_move_NN(self):
+		move = searchNN(self.board)
 		print(move)
 		self.board.push(move)

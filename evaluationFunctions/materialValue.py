@@ -5,24 +5,15 @@ calculates board material by counting up the pieces and multiplying them with th
 import chess
 
 PIECE_VALUES = {
-    chess.PAWN: 10,
-    chess.KNIGHT: 30,
-    chess.BISHOP: 35,
-    chess.ROOK: 50,
-    chess.QUEEN: 90,
+    chess.PAWN: 100,
+    chess.KNIGHT: 300,
+    chess.BISHOP: 350,
+    chess.ROOK: 500,
+    chess.QUEEN: 900,
     chess.KING: 0
 }
 
 def calculate_material_value(board):
-    if board.is_game_over(): # claim_draw=True
-        if board.is_checkmate():
-            if board.turn == chess.BLACK:
-                return 100000
-            elif board.turn == chess.WHITE:
-                return -100000
-        else:
-            return 0
-
     evaluation = 0
 
     for square, piece in board.piece_map().items():
@@ -32,8 +23,5 @@ def calculate_material_value(board):
             evaluation += value
         else:
             evaluation -= value
-    
-    if board.turn == False:
-        evaluation *= -1
 
     return evaluation
