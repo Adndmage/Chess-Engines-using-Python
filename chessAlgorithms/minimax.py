@@ -22,7 +22,9 @@ def search(board, depth, alpha, beta):
     best_evaluation = -100000
     best_move = None
 
-    for move in board.legal_moves:
+    moves_ordered = reorder_moves(board)
+
+    for move in moves_ordered:
         # Evaluate the move
         board.push(move)
         evaluation = -search(board, depth - 1, -beta, -alpha)[0]
