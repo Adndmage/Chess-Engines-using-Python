@@ -4,9 +4,8 @@ minimax implementation to decide upon moves
 import chess
 import time
 from math import inf
-from random import choice
 from chessAlgorithms.moveOrdering import reorder_moves
-from evaluationFunctions.materialValue import calculate_material_value
+from evaluationFunctions.evaluationBasic import evaluate_position, calculate_material_value
 # from evaluationFunctions.calculateAIEvalf import evaluate_board
 # from evaluationFunctions.calculateBigAIEvalf import evaluate_board
 
@@ -19,14 +18,27 @@ def iterative_deepening(board, max_depth, time_limit=None):
         if time_limit and (time.time() - start_time) > time_limit:
             break
 
-        move = search(board, depth, -inf, inf)[1]
+        search_result = search(board, depth, -inf, inf, start_time, time_limit)
+
+        if search_result[0] is None:
+            break
+
+        move = search_result[1]
 
         if move is not None:
             best_move = move
-        
+    
+    # If no move was found, return the first legal move in the ordered move list
+    if best_move is None and board.legal_moves:
+        best_move = reorder_moves(board)[0]
+
     return best_move
 
-def search(board, depth, alpha, beta):
+def search(board, depth, alpha, beta, start_time=None, time_limit=None):
+    if start_time is not None and time_limit is not None:
+        if time.time() - start_time > time_limit:
+            return None, None  # Signal: timeout, no evaluation
+    
     if board.is_game_over():
         if board.is_checkmate():
             return -100000, None # Checkmate
@@ -43,6 +55,11 @@ def search(board, depth, alpha, beta):
     moves_ordered = reorder_moves(board)
 
     for move in moves_ordered:
+        # Before making a move, check the time limit
+        if start_time is not None and time_limit is not None:
+            if time.time() - start_time > time_limit:
+                return None, None  # Exit early if time exceede
+        
         # Evaluate the move
         board.push(move)
         evaluation = -search(board, depth - 1, -beta, -alpha)[0]
@@ -72,7 +89,7 @@ def quiescence_search(board, alpha, beta):
             return 0  # Draw
 
     # Get static evaluation relative to WHITE
-    stand_pat_white_relative = calculate_material_value(board)
+    stand_pat_white_relative = evaluate_position(board)
     # Convert to score relative to the CURRENT player
     stand_pat = stand_pat_white_relative if board.turn else -stand_pat_white_relative
 

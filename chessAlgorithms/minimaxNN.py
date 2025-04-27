@@ -4,7 +4,7 @@ minimax implementation to decide upon moves
 import chess
 from random import choice
 from chessAlgorithms.moveOrdering import reorder_moves
-from evaluationFunctions.materialValue import calculate_material_value
+from evaluationFunctions.evaluationBasic import calculate_material_value
 # from evaluationFunctions.calculateAIEvalf import evaluate_board
 from evaluationFunctions.calculateBigAIEvalf import evaluate_board
 

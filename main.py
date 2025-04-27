@@ -1,5 +1,5 @@
 import chess
-from Game import *
+from Game import Game
 
 game = Game(["Human", "AI"])
 
@@ -11,11 +11,11 @@ move_number = 0
 print(game.board)
 while not game.board.is_game_over():
     if game.board.turn:
-        game.computer_move_NN()
+        game.computer_move_minimax()
     else:
         game.computer_move_minimax()
 
-    move_number += 1
+    move_number += 0.5
     print(f"\nMove {move_number}:")
     print(game.board)
 

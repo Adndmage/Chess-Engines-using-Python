@@ -9,7 +9,7 @@ from evaluationFunctions.calculateAIEvalf import evaluate_board
 from chessAlgorithms.humanPlayer import human_player
 from chessAlgorithms.randomPlayer import random_player
 from chessAlgorithms.bestNextMove import bestNextMovePlayer
-from chessAlgorithms.minimax import search
+from chessAlgorithms.minimax import search, iterative_deepening
 from chessAlgorithms.minimaxNN import searchNN
 
 
@@ -19,7 +19,8 @@ The Game manager which holds players
 
 class Game:
 	def __init__(self, players):
-		self.board = chess.Board()
+		fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+		self.board = chess.Board(fen)
 		self.players = players
 	
 
@@ -44,7 +45,7 @@ class Game:
 		print(evaluate_board(self.board))
 	
 	def computer_move_minimax(self):
-		move = search(self.board)
+		move = iterative_deepening(self.board, max_depth=10, time_limit=5)
 		print(move)
 		self.board.push(move)
 
