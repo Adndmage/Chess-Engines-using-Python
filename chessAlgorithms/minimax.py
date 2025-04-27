@@ -3,6 +3,7 @@ minimax implementation to decide upon moves
 """
 import chess
 import time
+from math import inf
 from random import choice
 from chessAlgorithms.moveOrdering import reorder_moves
 from evaluationFunctions.materialValue import calculate_material_value
@@ -18,7 +19,7 @@ def iterative_deepening(board, max_depth, time_limit=None):
         if time_limit and (time.time() - start_time) > time_limit:
             break
 
-        move = search(board, depth, -100000, 100000)[1]
+        move = search(board, depth, -inf, inf)[1]
 
         if move is not None:
             best_move = move
@@ -26,17 +27,17 @@ def iterative_deepening(board, max_depth, time_limit=None):
     return best_move
 
 def search(board, depth, alpha, beta):
+    if board.is_game_over():
+        if board.is_checkmate():
+            return -100000, None # Checkmate
+        else:
+            return 0, None  # Draw
+        
     if depth == 0:
         evaluation = quiescence_search(board, alpha, beta)
         return evaluation, None
     
-    if board.is_game_over():
-        if board.is_checkmate():
-            return (-10000 if board.turn else 10000), None # Checkmate
-        else:
-            return 0, None  # Draw
-    
-    best_evaluation = -100000
+    best_evaluation = -inf
     best_move = None
 
     moves_ordered = reorder_moves(board)
@@ -58,18 +59,13 @@ def search(board, depth, alpha, beta):
 
         if alpha >= beta:
             break
-        
-        # This is a fallback in case the search fails to find a move
-        if not best_move:
-            if board.legal_moves:
-                best_move = choice([move for move in board.legal_moves])
 
     return best_evaluation, best_move
 
 def quiescence_search(board, alpha, beta):
     if board.is_game_over():
         if board.is_checkmate():
-            return -10000 if board.turn else 10000 # Checkmate
+            return -100000 # Checkmate
         else:
             return 0  # Draw
 
@@ -109,12 +105,12 @@ def quiescence_search(board, alpha, beta):
 #     global search_count
 #     search_count = 0
 
-#     best_evaluation = -100000
+#     best_evaluation = -inf
 #     best_move = choice(list(board.legal_moves))
 
 #     for move in board.legal_moves:
 #         board.push(move)
-#         evaluation = -minimax(board, -100000, 100000, 3)
+#         evaluation = -minimax(board, -inf, inf, 3)
 #         board.pop()
 
 #         if evaluation > best_evaluation:
@@ -130,7 +126,7 @@ def quiescence_search(board, alpha, beta):
 #     if depth == 0:
 #         return quiescence_search(board, alpha, beta)
     
-#     best_evaluation = -100000
+#     best_evaluation = -inf
 
 #     for move in board.legal_moves:
 #         search_count += 1
