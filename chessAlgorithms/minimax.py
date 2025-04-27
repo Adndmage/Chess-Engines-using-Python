@@ -10,12 +10,7 @@ from evaluationFunctions.materialValue import calculate_material_value
 # from evaluationFunctions.calculateAIEvalf import evaluate_board
 # from evaluationFunctions.calculateBigAIEvalf import evaluate_board
 
-KILLER_MOVES = {}
-
 def iterative_deepening(board, max_depth, time_limit=None):
-    global KILLER_MOVES
-    KILLER_MOVES = {}
-
     start_time = time.time() if time_limit is not None else None
 
     best_move = None
@@ -45,7 +40,7 @@ def search(board, depth, alpha, beta):
     best_evaluation = -inf
     best_move = None
 
-    moves_ordered = reorder_moves(board, depth, KILLER_MOVES)
+    moves_ordered = reorder_moves(board)
 
     for move in moves_ordered:
         # Evaluate the move
@@ -56,15 +51,6 @@ def search(board, depth, alpha, beta):
         # Beta-cutoff
         # Add move to killes moves if it caused a cutoff in a sibling node
         if evaluation >= beta:
-            if not board.is_capture(move):
-                if depth not in KILLER_MOVES:
-                    KILLER_MOVES[depth] = []
-                
-                if move not in KILLER_MOVES[depth]:
-                    KILLER_MOVES[depth].append(move)
-                if len(KILLER_MOVES[depth]) > 2:
-                        KILLER_MOVES[depth] = KILLER_MOVES[depth][:2]
-
             return evaluation, move
         
         if evaluation > best_evaluation:

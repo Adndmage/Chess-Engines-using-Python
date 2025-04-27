@@ -9,11 +9,8 @@ PIECE_VALUES = {
     chess.KING: 0
 }
 
-def reorder_moves(board, depth, KILLER_MOVES):
+def reorder_moves(board):
     move_list = list(board.legal_moves)
-
-    killers = KILLER_MOVES.get(depth, [])
-    killer_moves = [move for move in move_list if move in killers]
 
     # Captures sorted by MVV-LVA (Most Valuable Victim - Least Valuable Attacker)
     captures = [move for move in move_list if board.is_capture(move)]
@@ -31,11 +28,11 @@ def reorder_moves(board, depth, KILLER_MOVES):
                                                     if board.piece_at(move.to_square) else 0) <= 0]
     
     # List of checks
-    checks = [move for move in move_list if not board.is_capture(move) and board.gives_check(move) and move not in killer_moves]
+    checks = [move for move in move_list if not board.is_capture(move) and board.gives_check(move)]
 
     # List of quiet moves
-    quiet_moves = [move for move in move_list if not board.is_capture(move) and not board.gives_check(move) and move not in killer_moves]
+    quiet_moves = [move for move in move_list if not board.is_capture(move) and not board.gives_check(move)]
 
-    sorted_move_list = good_captures + killer_moves + checks + bad_captures + quiet_moves
+    sorted_move_list = good_captures + checks + bad_captures + quiet_moves
 
     return sorted_move_list
