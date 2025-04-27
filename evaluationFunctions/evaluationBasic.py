@@ -146,5 +146,5 @@ def calculate_material_value(board):
     return evaluation
 
 if __name__ == "__main__":
-    board = chess.Board("4k3/8/8/3Q4/8/8/8/1N2K3 w - - 0 1")
+    board = chess.Board("4k3/8/4p3/8/2B5/8/8/4K3 w - - 0 1")
     print(mobility(board, chess.WHITE))

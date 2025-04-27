@@ -18,7 +18,7 @@ def iterative_deepening(board, max_depth, time_limit=None):
         if time_limit and (time.time() - start_time) > time_limit:
             break
 
-        search_result = search(board, depth, -inf, inf, start_time, time_limit)
+        search_result = search(board, depth, -inf, inf, start_time, time_limit, preffered_move=best_move)
 
         if search_result[0] is None:
             break
@@ -34,7 +34,7 @@ def iterative_deepening(board, max_depth, time_limit=None):
 
     return best_move
 
-def search(board, depth, alpha, beta, start_time=None, time_limit=None):
+def search(board, depth, alpha, beta, start_time=None, time_limit=None, preffered_move=None):
     if start_time is not None and time_limit is not None:
         if time.time() - start_time > time_limit:
             return None, None  # Signal: timeout, no evaluation
@@ -53,6 +53,10 @@ def search(board, depth, alpha, beta, start_time=None, time_limit=None):
     best_move = None
 
     moves_ordered = reorder_moves(board)
+
+    if preffered_move is not None and preffered_move in moves_ordered:
+        moves_ordered.remove(preffered_move)
+        moves_ordered.insert(0, preffered_move)
 
     for move in moves_ordered:
         # Before making a move, check the time limit
@@ -116,72 +120,3 @@ def quiescence_search(board, alpha, beta):
         alpha = max(alpha, evaluation)
 
     return best_evaluation
-
-
-# search_count = 0
-
-# def search(board):
-#     global search_count
-#     search_count = 0
-
-#     best_evaluation = -inf
-#     best_move = choice(list(board.legal_moves))
-
-#     for move in board.legal_moves:
-#         board.push(move)
-#         evaluation = -minimax(board, -inf, inf, 3)
-#         board.pop()
-
-#         if evaluation > best_evaluation:
-#             best_evaluation = evaluation
-#             best_move = move
-#     print(f"Search Count: {search_count}")
-#     return best_move
-
-# def minimax(board, alpha, beta, depth):
-#     global search_count
-#     search_count += 1
-
-#     if depth == 0:
-#         return quiescence_search(board, alpha, beta)
-    
-#     best_evaluation = -inf
-
-#     for move in board.legal_moves:
-#         search_count += 1
-#         board.push(move)
-#         evaluation = -minimax(board, -alpha, -beta, depth - 1)
-#         board.pop()
-        
-#         if evaluation > best_evaluation:
-#             best_evaluation = evaluation
-#             alpha = max(alpha, evaluation)
-        
-#         if evaluation >= beta:
-#             return best_evaluation
-    
-#     return best_evaluation if board.turn else -best_evaluation
-
-# def quiescence_search(board, alpha, beta):
-#     stand_pat = calculate_material_value(board)
-#     best_evaluation = stand_pat
-
-#     if stand_pat >= beta:
-#         return stand_pat
-    
-#     if alpha < stand_pat:
-#         alpha = stand_pat
-    
-#     for move in [m for m in board.legal_moves if board.is_capture(m)]:
-#         board.push(move)
-#         evaluation = -quiescence_search(board, -beta, -alpha)
-#         board.pop()
-
-#         if evaluation >= beta:
-#             return evaluation
-        
-#         if evaluation > best_evaluation:
-#             best_evaluation = evaluation
-#             alpha = max(alpha, evaluation)
-        
-#     return best_evaluation if board.turn else -best_evaluation
