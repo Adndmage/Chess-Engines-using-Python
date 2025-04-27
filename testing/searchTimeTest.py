@@ -11,15 +11,15 @@ from chessAlgorithms.minimax import search, iterative_deepening
 # r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5Q2/PPPP1PPP/RNB1K1NR b KQkq - 3 3 # Checkmate white
 # rnb1k1nr/pppp1ppp/5q2/2b1p3/2B1P3/N7/PPPP1PPP/R1BQK1NR w KQkq - 4 4 # Checkmate black  
 # Set up a board position
-# "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2" # Englund gambit
-fen = "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5Q2/PPPP1PPP/RNB1K1NR b KQkq - 3 3"
+# rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2 # Englund gambit
+fen = "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2"
 board = chess.Board(fen)
 
 # Testing the search function
 print("=== Finding Best Move ===")
 start_time = time.time()
-best_move = search(board, 2, -inf, inf)[1]
-# best_move = iterative_deepening(board, max_depth=5, time_limit=10)
+# best_move = search(board, 3, -inf, inf)[1]
+best_move = iterative_deepening(board, max_depth=5, time_limit=10)
 end_time = time.time()
 print(f"Best move: {best_move}")
 print(f"Time taken: {end_time - start_time:.4f} seconds\n")
