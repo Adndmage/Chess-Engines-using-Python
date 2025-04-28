@@ -55,17 +55,25 @@ def load_dataset_toupleList(file_path):
     :param file_path: Path to the JSON file containing game states.
     :return: A list of (board, evaluation) tuples.
     """
+    if not os.path.exists(file_path):
+        print(f"Error: File not found at {file_path}")
+        return []
+
     with open(file_path, 'r') as file:
         games = json.load(file)
-    
+
     dataset = []
     for game in games:
         for position in game:
-            fen = position['board_fen']
-            evaluation = position['evaluation'] 
+            #fen = position['board_fen']
+            fen = position['fen_board']
+            evaluation = position['evaluation']
             if evaluation is None:
                 continue
-            dataset.append((chess.Board(fen), evaluation/1000)) # to touple and Normalize evaluation
+            # Ensure evaluation is normalized to the range [-1, 1]
+            if abs(evaluation) > 1.1:
+                evaluation = evaluation / 10000  # Normalize if values are in the range [-10000, 10000]
+            dataset.append((chess.Board(fen), evaluation))
     return dataset
 
 # Custom Dataset for batching
@@ -325,6 +333,9 @@ if __name__ == "__main__":
     json_file_path5 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\lichess_games_Vlad_Lazarev79.json"
     json_file_path_stockfish = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
+    # second round og data
+    json_file_path6 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newData\flattened_lichessDatabaseGames-2013-10.json"
+
     # Path to save/load the model
     # model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\simpelModel.pth"
     # biggerModel.pth
@@ -334,16 +345,22 @@ if __name__ == "__main__":
     # biggerThanBiggestModel.pth
     #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\biggerThanBiggestModel.pth"
     # longerThanBiggestModel.pth
-    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\longerThanBiggestModel.pth"
+    #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\longerThanBiggestModel.pth"
+
+    # newBiggerThanBiggestModel.pth
+    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newBiggerThanBiggestModel.pth"
+    
 
     # Load the dataset
-    dataset = load_dataset_toupleList(json_file_path1)
-    dataset += load_dataset_toupleList(json_file_path2)
-    dataset += load_dataset_toupleList(json_file_path3)
-    dataset += load_dataset_toupleList(json_file_path4)
-    dataset += load_dataset_toupleList(json_file_path5)
-    dataset += load_dataset_toupleList(json_file_path_stockfish)
+    #dataset = load_dataset_toupleList(json_file_path1)
+    #dataset += load_dataset_toupleList(json_file_path2)
+    #dataset += load_dataset_toupleList(json_file_path3)
+    #dataset += load_dataset_toupleList(json_file_path4)
+    #dataset += load_dataset_toupleList(json_file_path5)
+    #dataset += load_dataset_toupleList(json_file_path_stockfish)
     
+    dataset = load_dataset_toupleList(json_file_path6)
+
     # Augment the dataset with mirrored positions
     dataset += augment_dataset_with_mirrored_positions(dataset)
 
@@ -353,16 +370,16 @@ if __name__ == "__main__":
     train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
 
     # Create DataLoaders for training and validation
-    batch_size = 1024  # Reduced batch size to balance GPU utilization and CPU workload
+    batch_size = 512  # Reduced batch size to balance GPU utilization and CPU workload
     num_workers = 4  # Reduced number of workers to avoid overwhelming the CPU
-    prefetch_factor = 1  # Prefetch 2 batches per worker
+    #prefetch_factor = 1  # Prefetch 2 batches per worker
     train_loader = DataLoader(
         ChessDataset(train_dataset),
         batch_size=batch_size,
         shuffle=True,
         pin_memory=True,
         num_workers=num_workers,
-        prefetch_factor=prefetch_factor,
+        #prefetch_factor=prefetch_factor,
         persistent_workers=True
     )
     val_loader = DataLoader(
@@ -371,7 +388,7 @@ if __name__ == "__main__":
         shuffle=False,
         pin_memory=True,
         num_workers=num_workers,
-        prefetch_factor=prefetch_factor,
+        #prefetch_factor=prefetch_factor,
         persistent_workers=True
     )
 
@@ -379,8 +396,8 @@ if __name__ == "__main__":
     #model = SimpleChessNet().to(device)
     #model = BiggerChessNet().to(device)
     #model = BiggestChessNet().to(device)
-    #model = BiggerThanBiggestChessNet().to(device)
-    model = LongerThanBiggestChessNet().to(device)
+    model = BiggerThanBiggestChessNet().to(device)
+    #model = LongerThanBiggestChessNet().to(device)
 
     # Check if a saved model exists
     if os.path.exists(model_file_path):
@@ -398,7 +415,7 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # Train the model with training and validation sets
-    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=100)
+    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=50)
 
     # Save the model parameters after training
     print("Saving model parameters...")
