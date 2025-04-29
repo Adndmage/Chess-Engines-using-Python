@@ -65,16 +65,13 @@ def create_game():
     player_1_color = dropdown_white_player.getSelected() if dropdown_white_player.getSelected() != None else chess.WHITE
     max_depth = slider_max_depth.getValue()
     time_limit = slider_time.getValue()
-    engine_type_p1 = dropdown_player_1.getSelected() if dropdown_player_1.getSelected() != None else "human"
+    engine_type_p1 = dropdown_player_1.getSelected() if dropdown_player_1.getSelected() != None else "Human"
     engine_type_p2 = dropdown_player_2.getSelected() if dropdown_player_2.getSelected() != None else 1
     fen_string = input_starting_position.getText()
 
-    if engine_type_p1 == "human" and engine_type_p2 == "human":
+    if engine_type_p1 == "Human" and engine_type_p2 == "Human":
         print("At least one player must be an engine.")
         return
-    
-    print(f"Dropdown P1 {dropdown_player_1.getSelected()}")
-    print(f"Dropdown P2 {dropdown_player_2.getSelected()}")
 
     game = ChessGame(player_1_color, max_depth, time_limit, engine_type_p1, engine_type_p2, fen=fen_string)
 
@@ -117,7 +114,7 @@ dropdown_player_1 = Dropdown(screen,
     choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", 
              "Neural Network 5", "Neural Network 6", "Neural Network 7", "Neural Network 1 + Material",  "Neural Network 2 + Material", 
              "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material", "Neural Network 6 + Material", "Neural Network 7 + Material"],
-    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    values=["Human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
@@ -129,7 +126,7 @@ dropdown_player_2 = Dropdown(screen,
         choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", 
              "Neural Network 5", "Neural Network 6", "Neural Network 7", "Neural Network 1 + Material",  "Neural Network 2 + Material", 
              "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material", "Neural Network 6 + Material", "Neural Network 7 + Material"],
-    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    values=["Human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
@@ -189,9 +186,9 @@ def main():
 
                 human_color = None
 
-                if game.engine_type_p1 == "human":
+                if game.engine_type_p1 == "Human":
                     human_color = chess.WHITE if game.player_1_color == chess.WHITE else chess.BLACK
-                elif game.engine_type_p2 == "human":
+                elif game.engine_type_p2 == "Human":
                     human_color = chess.BLACK if game.player_1_color == chess.WHITE else chess.WHITE
 
                 if selected_square is None and human_color == game.board.turn:
@@ -226,6 +223,7 @@ def main():
             pg.display.flip()
 
             if game.board.is_game_over():
+                print(f"Player 1: Engine {game.engine_type_p1}, Color ({game.player_1_color}) vs Player 2: Engine {game.engine_type_p2}, Color ({chess.WHITE if game.player_1_color == chess.BLACK else chess.BLACK})")
                 print("Game Over:", game.board.result())
                 print("Game PGN:", game.PGN)
                 time.sleep(3)
@@ -233,11 +231,11 @@ def main():
                 continue
             
             if game.board.turn == game.player_1_color:
-                if game.engine_type_p1 != "human":
+                if game.engine_type_p1 != "Human":
                     game.make_engine_move(game.engine_type_p1)
                     continue
             elif game.board.turn != game.player_1_color:
-                if game.engine_type_p2 != "human":
+                if game.engine_type_p2 != "Human":
                     game.make_engine_move(game.engine_type_p2)
                     continue
         else:
