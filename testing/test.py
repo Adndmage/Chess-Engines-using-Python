@@ -1,15 +1,31 @@
-import pygame_widgets
 import pygame
-from pygame_widgets.slider import Slider
-from pygame_widgets.textbox import TextBox
 
+import pygame_widgets
+from pygame_widgets.button import Button
+
+# Set up Pygame
 pygame.init()
-win = pygame.display.set_mode((1000, 600))
+win = pygame.display.set_mode((600, 600))
 
-slider = Slider(win, 100, 100, 800, 40, min=0, max=99, step=1)
-output = TextBox(win, 475, 200, 50, 50, fontSize=10)
+# Creates the button with optional parameters
+button = Button(
+    # Mandatory Parameters
+    win,  # Surface to place button on
+    100,  # X-coordinate of top left corner
+    100,  # Y-coordinate of top left corner
+    300,  # Width
+    150,  # Height
 
-output.disable()  # Act as label instead of textbox
+    # Optional Parameters
+    text='Hello',  # Text to display
+    fontSize=50,  # Size of font
+    margin=20,  # Minimum distance between text/image and edge of button
+    inactiveColour=(200, 50, 0),  # Colour of button when not being interacted with
+    hoverColour=(150, 0, 0),  # Colour of button when being hovered over
+    pressedColour=(0, 200, 20),  # Colour of button when being clicked
+    radius=20,  # Radius of border corners (leave empty for not curved)
+    onClick=lambda: print('Click')  # Function to call when clicked on
+)
 
 run = True
 while run:
@@ -22,7 +38,5 @@ while run:
 
     win.fill((255, 255, 255))
 
-    output.setText(str(slider.getValue()))
-
-    pygame_widgets.update(events)
+    pygame_widgets.update(events)  # Call once every loop to allow widgets to render and listen
     pygame.display.update()

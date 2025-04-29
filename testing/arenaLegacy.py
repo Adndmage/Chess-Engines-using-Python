@@ -40,6 +40,7 @@ board = chess.Board()
 
 # Selected piece
 selected_square = None
+human_color = chess.BLACK  # You can switch to chess.BLACK
 
 def draw_board(screen, board):
     for rank in range(8):
@@ -47,22 +48,26 @@ def draw_board(screen, board):
             square_color = WHITE_COLOR if (rank + file) % 2 == 0 else BLACK_COLOR
             pg.draw.rect(screen, square_color, pg.Rect(file * SQUARE_SIZE, rank * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
-            piece = board.piece_at(chess.square(file, 7 - rank))
+            piece = board.piece_at(chess.square(7 - file, rank))
             if piece:
                 color = 'w' if piece.color == chess.WHITE else 'b'
                 piece_str = color + piece.symbol().upper()
                 screen.blit(pieces[piece_str], (file * SQUARE_SIZE, rank * SQUARE_SIZE))
 
 def get_square_under_mouse(pos):
-    file = pos[0] // SQUARE_SIZE
-    rank = 7 - (pos[1] // SQUARE_SIZE)
+    if human_color == "white":
+        file = pos[0] // 80
+        rank = 7 - (pos[1] // 80)
+    else:
+        file = 7 - (pos[0] // 80)
+        rank = pos[1] // 80
+
     return chess.square(file, rank)
 
 def main():
     global selected_square
 
     app_running = True
-    human_color = chess.BLACK  # You can switch
 
     while app_running:
         draw_board(screen, board)
