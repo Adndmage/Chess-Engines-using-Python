@@ -5,7 +5,7 @@ import time
 from math import inf
 from chessAlgorithms.moveOrdering import reorder_moves
 from evaluationFunctions.evaluationBasic import evaluate_position, calculate_material_value
-from evaluationFunctions.allAIEvalInOne import evaluate_board_eval, evaluate_board_10_10_10_eval, evaluate_board_64_32_16_eval, evaluate_board_128_64_32_16_eval, evaluate_board_64_64_32_32_16_16_eval, evaluate_newdata_board_128_64_32_16_eval, evaluate_newdata_board2_128_64_32_16_eval
+from evaluationFunctions.allAIEvalInOne import evaluate_board_eval, evaluate_board_10_10_10_eval, evaluate_board_64_32_16_eval, evaluate_board_64_64_32_32_16_16_eval, evaluate_board_128_64_32_16_eval, evaluate_newdata_board_128_64_32_16_eval, evaluate_newdata_board2_128_64_32_16_eval
 # from evaluationFunctions.calculateAIEvalf import evaluate_board_1
 # from evaluationFunctions.calculateBigAIEvalf import evaluate_board_2
 # from evaluationFunctions.calculateBestPerformingAIEval import evaluate_board_3
@@ -109,9 +109,9 @@ def quiescence_search(board, alpha, beta, engine_type=1):
     elif engine_type == 5:
         evaluation = evaluate_board_64_32_16_eval(board)
     elif engine_type == 6:
-        evaluation = evaluate_board_128_64_32_16_eval(board)
-    elif engine_type == 7:
         evaluation = evaluate_board_64_64_32_32_16_16_eval(board)
+    elif engine_type == 7:
+        evaluation = evaluate_board_128_64_32_16_eval(board)
     elif engine_type == 8:
         evaluation = evaluate_newdata_board_128_64_32_16_eval(board)
     elif engine_type == 9:
@@ -123,9 +123,9 @@ def quiescence_search(board, alpha, beta, engine_type=1):
     elif engine_type == 12:
         evaluation = evaluate_board_64_32_16_eval(board) + calculate_material_value(board)
     elif engine_type == 13:
-        evaluation = evaluate_board_128_64_32_16_eval(board) + calculate_material_value(board)
-    elif engine_type == 14:
         evaluation = evaluate_board_64_64_32_32_16_16_eval(board) + calculate_material_value(board)
+    elif engine_type == 14:
+        evaluation = evaluate_board_128_64_32_16_eval(board) + calculate_material_value(board)
     elif engine_type == 15:
         evaluation = evaluate_newdata_board_128_64_32_16_eval(board) + calculate_material_value(board)
     elif engine_type == 16:
