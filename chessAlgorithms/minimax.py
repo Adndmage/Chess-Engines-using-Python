@@ -6,9 +6,11 @@ import time
 from math import inf
 from chessAlgorithms.moveOrdering import reorder_moves
 from evaluationFunctions.evaluationBasic import evaluate_position, calculate_material_value
-from evaluationFunctions.calculateNewBestPerformingAIEval import evaluate_board
-# from evaluationFunctions.calculateAIEvalf import evaluate_board
-# from evaluationFunctions.calculateBigAIEvalf import evaluate_board
+from evaluationFunctions.calculateAIEvalf import evaluate_board_1
+from evaluationFunctions.calculateBigAIEvalf import evaluate_board_2
+from evaluationFunctions.calculateBestPerformingAIEval import evaluate_board_3
+from evaluationFunctions.calculateNewBestPerformingAIEval import evaluate_board_4
+from evaluationFunctions.calculateNewInputeTensorAiEvalf import evaluate_board_5
 
 def iterative_deepening(board, max_depth, time_limit=None, engine_type=1):
     start_time = time.time() if time_limit is not None else None
@@ -16,7 +18,7 @@ def iterative_deepening(board, max_depth, time_limit=None, engine_type=1):
     best_move = None
 
     for depth in range(1, max_depth + 1):
-        print(f"Depth: {depth}")
+        # print(f"Depth: {depth}")
 
         if time_limit and (time.time() - start_time) > time_limit:
             break
@@ -99,9 +101,13 @@ def quiescence_search(board, alpha, beta, engine_type=1):
     if engine_type == 1:
         evaluation = evaluate_position(board)
     elif engine_type == 2:
-        evaluation = evaluate_board(board)
+        evaluation = evaluate_board_4(board)
     elif engine_type == 3:
-        evaluation = evaluate_board(board) + calculate_material_value(board)
+        evaluation = evaluate_board_4(board) + calculate_material_value(board)
+    elif engine_type == 4:
+        evaluation = evaluate_board_5(board)
+    elif engine_type == 5:
+        evaluation = evaluate_board_5(board) + calculate_material_value(board)
     else:
         raise ValueError("Invalid engine type.")
 

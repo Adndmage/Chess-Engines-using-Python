@@ -8,7 +8,7 @@ import os
 current_dir = os.path.dirname(__file__)  # Directory of the current script
 model_file_path = os.path.join(current_dir, "AI_stuff", "model.pth")
 
-def evaluate_board(board):
+def evaluate_board_1(board):
     """
     Evaluate a chess board using the trained model.
     :param board: A chess.Board object.
@@ -35,5 +35,5 @@ if __name__ == "__main__":
     board = chess.Board()
 
     # Evaluate the board
-    evaluation = evaluate_board(board)
+    evaluation = evaluate_board_1(board)
     print(f"Board Evaluation: {evaluation:.6f}")

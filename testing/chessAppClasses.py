@@ -22,6 +22,9 @@ class ChessGame:
         self.time_limit = time_limit
         self.engine_type_p1 = engine_type_p1
         self.engine_type_p2 = engine_type_p2
+
+        self.move_number = 0
+        self.PGN = ""
     
     def start_game(self, player_1_color, max_depth, time_limit, engine_type_p1, engine_type_p2, fen=None):
         self.running = True
@@ -43,6 +46,13 @@ class ChessGame:
         move = iterative_deepening(self.board, self.max_depth, self.time_limit, engine_type)
         
         if move:
+            san_move = self.board.san(move)
+            add_to_pgn = f"{self.move_number + 1}. {san_move}" if self.board.turn == chess.WHITE else f"{san_move}"
+            self.PGN += f"{add_to_pgn} "
+            self.move_number += 1 if self.board.turn == chess.WHITE else 0
+
+            print(add_to_pgn)
+
             self.board.push(move)
 
 

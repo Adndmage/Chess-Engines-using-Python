@@ -114,8 +114,8 @@ dropdown_white_player = Dropdown(screen,
 dropdown_player_1 = Dropdown(screen,
     30, 320, WIDTH/2 - 60, 25, # Coordinates and size
     name="Choose Player or Engine type",
-    choices=["Human", "Basic Evaluation", "Neural Network", "Neural Network + Material"],
-    values=["human", 1, 2, 3],
+    choices=["Human", "Basic Evaluation", "Neural Network", "Neural Network + Material", "Neural Network 2", "Neural Network 2 + Material"],
+    values=["human", 1, 2, 3, 4, 5],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
@@ -124,8 +124,8 @@ dropdown_player_1 = Dropdown(screen,
 dropdown_player_2 = Dropdown(screen,
     350, 320, WIDTH/2 - 60, 25, # Coordinates and size
     name="Choose Player or Engine type",
-    choices=["Human", "Basic Evaluation", "Neural Network", "Neural Network + Material"],
-    values=["human", 1, 2, 3],
+    choices=["Human", "Basic Evaluation", "Neural Network", "Neural Network + Material", "Neural Network 2", "Neural Network 2 + Material"],
+    values=["human", 1, 2, 3, 4, 5],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
@@ -181,6 +181,7 @@ def main():
 
             if game.board.is_game_over():
                 print("Game Over:", game.board.result())
+                print("Game PGN:", game.PGN)
                 time.sleep(3)
                 app_running = False
             
@@ -231,11 +232,14 @@ def main():
                     ):
                         move.promotion = chess.QUEEN  # Default to Queen promotion
 
-                    # Then check if move is legal
                     if move in game.board.legal_moves:
-                        game.board.push(move)
+                        san_move = game.board.san(move)
+                        add_to_pgn = f"{game.move_number + 1}. {san_move}" if game.board.turn == chess.WHITE else f"{san_move}"
+                        game.PGN += f"{add_to_pgn} "
+                        game.move_number += 1 if game.board.turn == chess.WHITE else 0
 
-                    if move in game.board.legal_moves:
+                        print(add_to_pgn)
+
                         game.board.push(move)
                         selected_square = None
                     else:
