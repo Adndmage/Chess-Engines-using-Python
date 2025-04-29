@@ -6,19 +6,22 @@ import time
 from math import inf
 from chessAlgorithms.moveOrdering import reorder_moves
 from evaluationFunctions.evaluationBasic import evaluate_position, calculate_material_value
+from evaluationFunctions.calculateNewBestPerformingAIEval import evaluate_board
 # from evaluationFunctions.calculateAIEvalf import evaluate_board
 # from evaluationFunctions.calculateBigAIEvalf import evaluate_board
 
-def iterative_deepening(board, max_depth, time_limit=None):
+def iterative_deepening(board, max_depth, time_limit=None, engine_type=1):
     start_time = time.time() if time_limit is not None else None
 
     best_move = None
 
     for depth in range(1, max_depth + 1):
+        print(f"Depth: {depth}")
+
         if time_limit and (time.time() - start_time) > time_limit:
             break
 
-        search_result = search(board, depth, -inf, inf, start_time, time_limit, preffered_move=best_move)
+        search_result = search(board, depth, -inf, inf, start_time, time_limit, engine_type, preffered_move=best_move)
 
         if search_result[0] is None:
             break
@@ -34,7 +37,7 @@ def iterative_deepening(board, max_depth, time_limit=None):
 
     return best_move
 
-def search(board, depth, alpha, beta, start_time=None, time_limit=None, preffered_move=None):
+def search(board, depth, alpha, beta, start_time=None, time_limit=None, engine_type=1, preffered_move=None):
     if start_time is not None and time_limit is not None:
         if time.time() - start_time > time_limit:
             return None, None  # Signal: timeout, no evaluation
@@ -46,7 +49,7 @@ def search(board, depth, alpha, beta, start_time=None, time_limit=None, preffere
             return 0, None  # Draw
         
     if depth == 0:
-        evaluation = quiescence_search(board, alpha, beta)
+        evaluation = quiescence_search(board, alpha, beta, engine_type)
         return evaluation, None
     
     best_evaluation = -inf
@@ -62,15 +65,14 @@ def search(board, depth, alpha, beta, start_time=None, time_limit=None, preffere
         # Before making a move, check the time limit
         if start_time is not None and time_limit is not None:
             if time.time() - start_time > time_limit:
-                return None, None  # Exit early if time exceede
+                return None, None  # Exit early if time limit is exceeded
         
         # Evaluate the move
         board.push(move)
-        evaluation = -search(board, depth - 1, -beta, -alpha)[0]
+        evaluation = -search(board, depth - 1, -beta, -alpha, engine_type)[0]
         board.pop()
 
         # Beta-cutoff
-        # Add move to killes moves if it caused a cutoff in a sibling node
         if evaluation >= beta:
             return evaluation, move
         
@@ -85,7 +87,7 @@ def search(board, depth, alpha, beta, start_time=None, time_limit=None, preffere
 
     return best_evaluation, best_move
 
-def quiescence_search(board, alpha, beta):
+def quiescence_search(board, alpha, beta, engine_type=1):
     if board.is_game_over():
         if board.is_checkmate():
             return -100000 # Checkmate
@@ -93,7 +95,18 @@ def quiescence_search(board, alpha, beta):
             return 0  # Draw
 
     # Get static evaluation relative to WHITE
-    stand_pat_white_relative = evaluate_position(board)
+    evaluation = None
+    if engine_type == 1:
+        evaluation = evaluate_position(board)
+    elif engine_type == 2:
+        evaluation = evaluate_board(board)
+    elif engine_type == 3:
+        evaluation = evaluate_board(board) + calculate_material_value(board)
+    else:
+        raise ValueError("Invalid engine type.")
+
+    stand_pat_white_relative = evaluation
+    
     # Convert to score relative to the CURRENT player
     stand_pat = stand_pat_white_relative if board.turn else -stand_pat_white_relative
 

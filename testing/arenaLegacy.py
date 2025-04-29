@@ -1,22 +1,24 @@
-import pygame
+import pygame as pg
 import chess
+import chess.svg
 import time
 import sys
 import os
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from chessAlgorithms.minimax import iterative_deepening
 
-# Init pygame
-pygame.init()
-
-# Settings
+# Constants
 WIDTH, HEIGHT = 640, 640
 SQUARE_SIZE = WIDTH // 8
+WHITE_COLOR = (240, 217, 181)
+BLACK_COLOR = (181, 136, 99)
 
-# Colors
-LIGHT = (240, 217, 181)
-DARK = (181, 136, 99)
+# Pygame standard setup
+pg.init()
+screen = pg.display.set_mode((WIDTH, HEIGHT))
+pg.display.set_caption("Chess Engine GUI")
+clock = pg.time.Clock()
+app_running = True
 
 # Load piece images
 pieces = {}
@@ -28,15 +30,12 @@ images_path = os.path.join(os.path.dirname(__file__), "images")
 for color in colors:
     for ptype in piece_types:
         img_path = os.path.join(images_path, f"{color}{ptype}.svg")
-        img = pygame.image.load(img_path)
-        img = pygame.transform.scale(img, (SQUARE_SIZE, SQUARE_SIZE))
+        img = pg.image.load(img_path)
+        img = pg.transform.scale(img, (SQUARE_SIZE, SQUARE_SIZE))
         pieces[color + ptype] = img
 
-# Set up display
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Chess Engine GUI")
-
 # Board
+fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNB1KBNR w KQkq - 0 1"
 board = chess.Board()
 
 # Selected piece
@@ -45,8 +44,8 @@ selected_square = None
 def draw_board(screen, board):
     for rank in range(8):
         for file in range(8):
-            square_color = LIGHT if (rank + file) % 2 == 0 else DARK
-            pygame.draw.rect(screen, square_color, pygame.Rect(file * SQUARE_SIZE, rank * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+            square_color = WHITE_COLOR if (rank + file) % 2 == 0 else BLACK_COLOR
+            pg.draw.rect(screen, square_color, pg.Rect(file * SQUARE_SIZE, rank * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
             piece = board.piece_at(chess.square(file, 7 - rank))
             if piece:
@@ -62,33 +61,32 @@ def get_square_under_mouse(pos):
 def main():
     global selected_square
 
-    running = True
-    human_color = chess.WHITE  # You can switch
-    clock = pygame.time.Clock()
+    app_running = True
+    human_color = chess.BLACK  # You can switch
 
-    while running:
+    while app_running:
         draw_board(screen, board)
-        pygame.display.flip()
+        pg.display.flip()
 
         if board.is_game_over():
             print("Game Over:", board.result())
             time.sleep(3)
-            running = False
+            app_running = False
             continue
 
         if board.turn != human_color:
             # Engine move
-            move = iterative_deepening(board, max_depth=10, time_limit=5)
+            move = iterative_deepening(board, max_depth=10, time_limit=3)
             if move:
                 board.push(move)
             continue
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                app_running = False
 
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                pos = pg.mouse.get_pos()
                 square = get_square_under_mouse(pos)
 
                 if selected_square is None:
@@ -107,4 +105,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    pygame.quit()
+    pg.quit()

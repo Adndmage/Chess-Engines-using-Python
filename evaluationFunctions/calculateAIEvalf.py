@@ -27,7 +27,7 @@ def evaluate_board(board):
     with torch.no_grad():  # Disable gradient computation
         evaluation = model(input_tensor).item()
 
-    return evaluation*1000
+    return evaluation*-1000
 
 # test
 if __name__ == "__main__":
