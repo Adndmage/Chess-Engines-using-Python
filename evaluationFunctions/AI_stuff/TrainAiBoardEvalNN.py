@@ -49,6 +49,110 @@ def boardToTensor(board):
             bitboardTensor[plane][row][col] = 1 # set to relevant square in the bitboard tensor to 1 if there is a piece 
     return bitboardTensor
 
+
+
+
+def mobility(board, color):
+    score = 0
+
+    for piece_type in [chess.KNIGHT, chess.BISHOP, chess.ROOK]:
+        # mobility_weight = 1 if piece_type == chess.QUEEN else 2
+
+        piece_squares = board.pieces(piece_type, color)
+        score += sum(1 for move in board.legal_moves if move.from_square in piece_squares)
+
+    return score / 121 # Normalize by dividing by the maximum possible score (121)
+
+def centralization(board, color):
+    score = 0
+
+    for square in [chess.E4, chess.D4, chess.E5, chess.D5]:
+        piece = board.piece_at(square)
+        if piece and piece.color == color:
+            if piece.piece_type == chess.PAWN:
+                score += 2
+            else:
+                score += 1
+
+    return score/8 # Normalize by dividing by the maximum possible score (8)
+
+def boardToTensor2(board):
+    # calculate numpy bitboard for each piecetype
+    bitboardTensor = np.zeros((14, 8, 8)) # all zeros
+
+    # plane 1 - 12 for each piece types placement (white and black)
+    for square in chess.SQUARES:
+        piece = board.piece_at(square)
+        if piece:
+            plane = piece_map[(piece.piece_type, piece.color)]
+            row = 7 - (square // 8)
+            col = square % 8
+            bitboardTensor[plane][row][col] = 1 # set to relevant square in the bitboard tensor to 1 if there is a piece 
+    
+    # Plane 13: Attacked squares map for white
+    # Plane 14: Attacked squares map for black
+    for square in chess.SQUARES:
+        row = 7 - (square // 8)
+        col = square % 8
+
+        # Attack map for white
+        bitboardTensor[12][row][col] = sum(
+            1 for attacker_square in board.pieces(chess.PAWN, chess.WHITE) |
+                                    board.pieces(chess.KNIGHT, chess.WHITE) |
+                                    board.pieces(chess.BISHOP, chess.WHITE) |
+                                    board.pieces(chess.ROOK, chess.WHITE) |
+                                    board.pieces(chess.QUEEN, chess.WHITE) |
+                                    board.pieces(chess.KING, chess.WHITE)
+            if square in board.attacks(attacker_square)
+        )
+        # Attack map for black
+        bitboardTensor[13][row][col] = sum(
+            1 for attacker_square in board.pieces(chess.PAWN, chess.BLACK) |
+                                    board.pieces(chess.KNIGHT, chess.BLACK) |
+                                    board.pieces(chess.BISHOP, chess.BLACK) |
+                                    board.pieces(chess.ROOK, chess.BLACK) |
+                                    board.pieces(chess.QUEEN, chess.BLACK) |
+                                    board.pieces(chess.KING, chess.BLACK)
+            if square in board.attacks(attacker_square)
+        )
+    
+    # Use pawn-restricted squares for global information
+    # On board 0 (white)and 6 (black) with pawns for each side
+    # On row 0 and row 7 for global info
+    # Castling rights
+    bitboardTensor[0][0][0] = board.has_kingside_castling_rights(chess.WHITE)
+    bitboardTensor[6][0][0] = board.has_kingside_castling_rights(chess.BLACK)
+
+    bitboardTensor[0][0][1] = board.has_queenside_castling_rights(chess.WHITE)
+    bitboardTensor[6][0][1] = board.has_queenside_castling_rights(chess.BLACK)
+
+    # Mobility scores
+    bitboardTensor[0][0][2] = mobility(board, chess.WHITE)
+    bitboardTensor[6][0][2] = mobility(board, chess.BLACK)
+
+    # Centralization scores
+    bitboardTensor[0][0][3] = centralization(board, chess.WHITE)
+    bitboardTensor[6][0][3] = centralization(board, chess.BLACK)
+
+
+    # count of piece types
+    white_total_pieces = len([piece for piece in board.piece_map().values() if piece.color == chess.WHITE])
+    black_total_pieces = len([piece for piece in board.piece_map().values() if piece.color == chess.BLACK])
+    bitboardTensor[0][7][0] = white_total_pieces / 16  # Normalize by max pieces
+    bitboardTensor[6][7][0] = black_total_pieces / 16  # Normalize by max pieces
+
+    # Count of each piece type (normalized)
+    for piece_type, max_count in [(chess.PAWN, 8), (chess.KNIGHT, 2), (chess.BISHOP, 2),
+                                  (chess.ROOK, 2), (chess.QUEEN, 1), (chess.KING, 1)]:
+        white_count = len(board.pieces(piece_type, chess.WHITE))
+        black_count = len(board.pieces(piece_type, chess.BLACK))
+        bitboardTensor[0][7][1 + piece_type - 1] = white_count / max_count  # Normalize
+        bitboardTensor[6][7][1 + piece_type - 1] = black_count / max_count  # Normalize
+    
+    return bitboardTensor
+
+
+
 def load_dataset_toupleList(file_path):
     """
     Load all game states from a JSON file.
@@ -86,7 +190,8 @@ class ChessDataset(Dataset):
 
     def __getitem__(self, idx):
         board, evaluation = self.dataset[idx]
-        input_tensor = boardToTensor(board)
+        #input_tensor = boardToTensor(board)
+        input_tensor = boardToTensor2(board) 
         input_tensor = torch.tensor(input_tensor, dtype=torch.float32)
         evaluation_tensor = torch.tensor([evaluation], dtype=torch.float32)
         return input_tensor, evaluation_tensor
@@ -109,50 +214,48 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10
     losses = []  # Store losses for each epoch
 
     for epoch in range(epochs):
-        print(f"Epoch {epoch + 1}/{epochs}")
-        model.train()  # Set model to training mode
-        total_train_loss = 0.0
+        try:
+            print(f"Epoch {epoch + 1}/{epochs}")
+            model.train()  # Set model to training mode
+            total_train_loss = 0.0
 
-        # Training loop
-        for inputs, targets in train_loader:
-            inputs, targets = inputs.to(device, non_blocking=True), targets.to(device, non_blocking=True)
-
-            # Forward pass
-            outputs = model(inputs)
-            loss = criterion(outputs, targets)
-
-            # Backward pass and optimization
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-
-            total_train_loss += loss.item() * len(inputs)
-
-        # Validation loop
-        model.eval()  # Set model to evaluation mode
-        total_val_loss = 0.0
-        with torch.no_grad():
-            for inputs, targets in val_loader:
+            # Training loop
+            for inputs, targets in train_loader:
                 inputs, targets = inputs.to(device, non_blocking=True), targets.to(device, non_blocking=True)
+
+                # Forward pass
                 outputs = model(inputs)
                 loss = criterion(outputs, targets)
-                total_val_loss += loss.item() * len(inputs)
 
-        # Calculate average losses for the epoch
-        avg_train_loss = total_train_loss / len(train_loader.dataset)
-        avg_val_loss = total_val_loss / len(val_loader.dataset)
-        print(f"Train Loss: {avg_train_loss:.6f}, Validation Loss: {avg_val_loss:.6f}")
+                # Backward pass and optimization
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
 
-        # Store losses
-        losses.append((epoch + 1, avg_train_loss, avg_val_loss))
+                total_train_loss += loss.item() * len(inputs)
+
+            # Validation loop
+            model.eval()  # Set model to evaluation mode
+            total_val_loss = 0.0
+            with torch.no_grad():
+                for inputs, targets in val_loader:
+                    inputs, targets = inputs.to(device, non_blocking=True), targets.to(device, non_blocking=True)
+                    outputs = model(inputs)
+                    loss = criterion(outputs, targets)
+                    total_val_loss += loss.item() * len(inputs)
+
+            # Calculate average losses for the epoch
+            avg_train_loss = total_train_loss / len(train_loader.dataset)
+            avg_val_loss = total_val_loss / len(val_loader.dataset)
+            print(f"Train Loss: {avg_train_loss:.6f}, Validation Loss: {avg_val_loss:.6f}")
+
+            # Store losses
+            losses.append((epoch + 1, avg_train_loss, avg_val_loss))
 
         # Check for user input to exit training
-        """
-        user_input = input("Press Enter to continue training or type 'exit' to stop: ").strip().lower()
-        if user_input == 'exit':
-            print("Exiting training early...")
-            break
-        """
+        except KeyboardInterrupt:
+            print("\nTraining interrupted. Exiting training loop...")
+            break  # Exit the loop but continue with the rest of the code
 
     # Print losses as CSV
     print("\nEpoch,Train Loss,Validation Loss")
@@ -272,6 +375,37 @@ class LongerThanBiggestChessNet(nn.Module): # 57329 parameters
         x = self.fc7(x)
         return x
 
+
+
+
+class NewTensorBiggerThanBiggestChessNet(nn.Module): # 125697 parameters
+    def __init__(self):
+        super(NewTensorBiggerThanBiggestChessNet, self).__init__()
+        # Flatten the 12x8x8 tensor into a single vector (768 features)
+        self.flatten = nn.Flatten()
+        
+        # Fully connected layers
+        self.fc1 = nn.Linear(14 * 8 * 8, 128)  # First layer: 768 -> 128
+        self.fc2 = nn.Linear(128, 64)         # Second layer: 128 -> 64
+        self.fc3 = nn.Linear(64, 32)         # Third layer: 64 -> 32
+        self.fc4 = nn.Linear(32, 16)          # Output layer: 32 -> 16
+        self.fc5 = nn.Linear(16, 1)          # Output layer: 16 -> 1
+
+    def forward(self, x):
+        x = self.flatten(x)  # Flatten the input tensor
+        
+        # Apply ReLU activation after each layer
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = torch.relu(self.fc3(x))
+        x = torch.relu(self.fc4(x))
+        
+        # Output layer (no activation function for regression)
+        x = self.fc5(x)
+        return x
+
+
+
 import random
 
 def test_model_on_samples(model, dataset, criterion, num_samples=10):
@@ -295,7 +429,9 @@ def test_model_on_samples(model, dataset, criterion, num_samples=10):
     with torch.no_grad():  # Disable gradient computation
         for board, actual in random_samples:
             # Convert board to tensor and move to GPU
-            input_tensor = torch.tensor(boardToTensor(board), dtype=torch.float32).unsqueeze(0).to(device)
+            #input_tensor = torch.tensor(boardToTensor(board), dtype=torch.float32).unsqueeze(0).to(device)
+            input_tensor = torch.tensor(boardToTensor2(board), dtype=torch.float32).unsqueeze(0).to(device)
+
 
             # Get the model's prediction
             predicted = model(input_tensor).item()
@@ -323,6 +459,16 @@ def augment_dataset_with_mirrored_positions(dataset):
     
     return mirrored_positions
 
+def get_dataset_chunk(dataset, fraction=0.2):
+    """
+    Get a random fraction of the dataset.
+    :param dataset: The full dataset (list of (board, evaluation) tuples).
+    :param fraction: The fraction of the dataset to use (e.g., 0.2 for 20%).
+    :return: A random subset of the dataset.
+    """
+    chunk_size = int(len(dataset) * fraction)
+    return random.sample(dataset, chunk_size)
+
 # Example usage
 if __name__ == "__main__":
     # Path to the JSON file
@@ -334,7 +480,8 @@ if __name__ == "__main__":
     json_file_path_stockfish = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\stockfish_training_data.json"
 
     # second round og data
-    json_file_path6 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newData\flattened_lichessDatabaseGames-2013-10.json"
+    #json_file_path6 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newData\flattened_lichessDatabaseGames-2013-10.json"
+    json_file_path6 = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newData\lessPrecise_flattened_lichessDatabaseGames-2013-10.json"
 
     # Path to save/load the model
     # model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\simpelModel.pth"
@@ -348,8 +495,9 @@ if __name__ == "__main__":
     #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\longerThanBiggestModel.pth"
 
     # newBiggerThanBiggestModel.pth
-    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newBiggerThanBiggestModel.pth"
-    
+    #model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newBiggerThanBiggestModel.pth"
+    # newNewTensorBiggerThanBiggestModel.pth
+    model_file_path = r"c:\Users\sebas\Desktop\programmering\DDU\EksamensProjekt DDU\chess bot - eksamensprojekt med leo\evaluationFunctions\AI_stuff\newNewTensorBiggerThanBiggestModel.pth"
 
     # Load the dataset
     #dataset = load_dataset_toupleList(json_file_path1)
@@ -370,9 +518,9 @@ if __name__ == "__main__":
     train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
 
     # Create DataLoaders for training and validation
-    batch_size = 512  # Reduced batch size to balance GPU utilization and CPU workload
+    batch_size = 1024  # Reduced batch size to balance GPU utilization and CPU workload
     num_workers = 4  # Reduced number of workers to avoid overwhelming the CPU
-    #prefetch_factor = 1  # Prefetch 2 batches per worker
+    prefetch_factor = 1  # Prefetch 2 batches per worker
     train_loader = DataLoader(
         ChessDataset(train_dataset),
         batch_size=batch_size,
@@ -396,8 +544,9 @@ if __name__ == "__main__":
     #model = SimpleChessNet().to(device)
     #model = BiggerChessNet().to(device)
     #model = BiggestChessNet().to(device)
-    model = BiggerThanBiggestChessNet().to(device)
+    #model = BiggerThanBiggestChessNet().to(device)
     #model = LongerThanBiggestChessNet().to(device)
+    model = NewTensorBiggerThanBiggestChessNet().to(device)
 
     # Check if a saved model exists
     if os.path.exists(model_file_path):
@@ -415,7 +564,7 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # Train the model with training and validation sets
-    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=50)
+    train_model(model, train_loader, val_loader, criterion, optimizer, epochs=20)
 
     # Save the model parameters after training
     print("Saving model parameters...")
