@@ -9,8 +9,6 @@ import time
 import sys
 import os
 from chessAppClasses import ChessGame, FontSprite
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from chessAlgorithms.minimax import iterative_deepening
 
 # Constants
 WIDTH, HEIGHT = 640, 640
@@ -112,20 +110,22 @@ dropdown_white_player = Dropdown(screen,
 )
 
 dropdown_player_1 = Dropdown(screen,
-    30, 320, WIDTH/2 - 60, 25, # Coordinates and size
+    30, 320, WIDTH/2 - 60, 20, # Coordinates and size
     name="Choose Player or Engine type",
-    choices=["Human", "Basic Evaluation", "Neural Network", "Neural Network + Material", "Neural Network 2", "Neural Network 2 + Material"],
-    values=["human", 1, 2, 3, 4, 5],
+    choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", "Neural Network 5", 
+             "Neural Network 1 + Material",  "Neural Network 2 + Material", "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material"],
+    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
 )
 
 dropdown_player_2 = Dropdown(screen,
-    350, 320, WIDTH/2 - 60, 25, # Coordinates and size
+    350, 320, WIDTH/2 - 60, 20, # Coordinates and size
     name="Choose Player or Engine type",
-    choices=["Human", "Basic Evaluation", "Neural Network", "Neural Network + Material", "Neural Network 2", "Neural Network 2 + Material"],
-    values=["human", 1, 2, 3, 4, 5],
+    choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", "Neural Network 5", 
+             "Neural Network 1 + Material",  "Neural Network 2 + Material", "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material"],
+    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
@@ -168,42 +168,13 @@ button_begin_game = Button(screen,
 # Game loop
 def main():
     global selected_square
+    global game
 
     app_running = True
 
     while app_running:
         events = pg.event.get()
-
-        # Starting screen
-        if game is not None:
-            draw_board(screen, game.board, perspective=game.player_1_color)
-            pg.display.flip()
-
-            if game.board.is_game_over():
-                print("Game Over:", game.board.result())
-                print("Game PGN:", game.PGN)
-                time.sleep(3)
-                app_running = False
-            
-            if game.board.turn == game.player_1_color:
-                if game.engine_type_p1 != "human":
-                    game.make_engine_move(game.engine_type_p1)
-                    continue
-            elif game.board.turn != game.player_1_color:
-                if game.engine_type_p2 != "human":
-                    game.make_engine_move(game.engine_type_p2)
-                    continue
-        else:
-            screen.fill("#FFFFFF")
-            starting_screen_text.draw(screen)
-
-            # Draw the textinput, dropdowns and sliders
-            text_slider_max_depth.setText(str(slider_max_depth.getValue()))
-            text_slider_time.setText(str(slider_time.getValue()))
-            pygame_widgets.update(events)
-
-            pg.display.flip()
-
+        
         for event in events:
             if event.type == pg.QUIT:
                 app_running = False
@@ -244,6 +215,37 @@ def main():
                         selected_square = None
                     else:
                         selected_square = None
+
+        # Starting screen
+        if game is not None:
+            draw_board(screen, game.board, perspective=game.player_1_color)
+            pg.display.flip()
+
+            if game.board.is_game_over():
+                print("Game Over:", game.board.result())
+                print("Game PGN:", game.PGN)
+                time.sleep(3)
+                game = None
+                continue
+            
+            if game.board.turn == game.player_1_color:
+                if game.engine_type_p1 != "human":
+                    game.make_engine_move(game.engine_type_p1)
+                    continue
+            elif game.board.turn != game.player_1_color:
+                if game.engine_type_p2 != "human":
+                    game.make_engine_move(game.engine_type_p2)
+                    continue
+        else:
+            screen.fill("#FFFFFF")
+            starting_screen_text.draw(screen)
+
+            # Draw the textinput, dropdowns and sliders
+            text_slider_max_depth.setText(str(slider_max_depth.getValue()))
+            text_slider_time.setText(str(slider_time.getValue()))
+            pygame_widgets.update(events)
+
+            pg.display.flip()
 
         clock.tick(60)  # Limits FPS to 60
 

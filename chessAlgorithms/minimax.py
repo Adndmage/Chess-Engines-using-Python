@@ -101,12 +101,26 @@ def quiescence_search(board, alpha, beta, engine_type=1):
     if engine_type == 1:
         evaluation = evaluate_position(board)
     elif engine_type == 2:
-        evaluation = evaluate_board_4(board)
+        evaluation = calculate_material_value(board)
     elif engine_type == 3:
-        evaluation = evaluate_board_4(board) + calculate_material_value(board)
+        evaluation = evaluate_board_1(board)
     elif engine_type == 4:
-        evaluation = evaluate_board_5(board)
+        evaluation = evaluate_board_2(board)
     elif engine_type == 5:
+        evaluation = evaluate_board_3(board)
+    elif engine_type == 6:
+        evaluation = evaluate_board_4(board)
+    elif engine_type == 7:
+        evaluation = evaluate_board_5(board)
+    elif engine_type == 8:
+        evaluation = evaluate_board_1(board) + calculate_material_value(board)
+    elif engine_type == 9:
+        evaluation = evaluate_board_2(board) + calculate_material_value(board)
+    elif engine_type == 10:
+        evaluation = evaluate_board_3(board) + calculate_material_value(board)
+    elif engine_type == 11:
+        evaluation = evaluate_board_4(board) + calculate_material_value(board)
+    elif engine_type == 12:
         evaluation = evaluate_board_5(board) + calculate_material_value(board)
     else:
         raise ValueError("Invalid engine type.")

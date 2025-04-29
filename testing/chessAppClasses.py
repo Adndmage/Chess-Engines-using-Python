@@ -27,7 +27,6 @@ class ChessGame:
         self.PGN = ""
     
     def start_game(self, player_1_color, max_depth, time_limit, engine_type_p1, engine_type_p2, fen=None):
-        self.running = True
         self.player_1_color = player_1_color
         self.max_depth = max_depth
         self.time_limit = time_limit
