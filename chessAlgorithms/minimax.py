@@ -1,16 +1,16 @@
 """
 minimax implementation to decide upon moves
 """
-import chess
 import time
 from math import inf
 from chessAlgorithms.moveOrdering import reorder_moves
 from evaluationFunctions.evaluationBasic import evaluate_position, calculate_material_value
-from evaluationFunctions.calculateAIEvalf import evaluate_board_1
-from evaluationFunctions.calculateBigAIEvalf import evaluate_board_2
-from evaluationFunctions.calculateBestPerformingAIEval import evaluate_board_3
-from evaluationFunctions.calculateNewBestPerformingAIEval import evaluate_board_4
-from evaluationFunctions.calculateNewInputeTensorAiEvalf import evaluate_board_5
+from evaluationFunctions.allAIEvalInOne import evaluate_board_eval, evaluate_board_10_10_10_eval, evaluate_board_64_32_16_eval, evaluate_board_128_64_32_16_eval, evaluate_board_64_64_32_32_16_16_eval, evaluate_newdata_board_128_64_32_16_eval, evaluate_newdata_board2_128_64_32_16_eval
+# from evaluationFunctions.calculateAIEvalf import evaluate_board_1
+# from evaluationFunctions.calculateBigAIEvalf import evaluate_board_2
+# from evaluationFunctions.calculateBestPerformingAIEval import evaluate_board_3
+# from evaluationFunctions.calculateNewBestPerformingAIEval import evaluate_board_4
+# from evaluationFunctions.calculateNewInputeTensorAiEvalf import evaluate_board_5
 
 def iterative_deepening(board, max_depth, time_limit=None, engine_type=1):
     start_time = time.time() if time_limit is not None else None
@@ -103,25 +103,33 @@ def quiescence_search(board, alpha, beta, engine_type=1):
     elif engine_type == 2:
         evaluation = calculate_material_value(board)
     elif engine_type == 3:
-        evaluation = evaluate_board_1(board)
+        evaluation = evaluate_board_eval(board)
     elif engine_type == 4:
-        evaluation = evaluate_board_2(board)
+        evaluation = evaluate_board_10_10_10_eval(board)
     elif engine_type == 5:
-        evaluation = evaluate_board_3(board)
+        evaluation = evaluate_board_64_32_16_eval(board)
     elif engine_type == 6:
-        evaluation = evaluate_board_4(board)
+        evaluation = evaluate_board_128_64_32_16_eval(board)
     elif engine_type == 7:
-        evaluation = evaluate_board_5(board)
+        evaluation = evaluate_board_64_64_32_32_16_16_eval(board)
     elif engine_type == 8:
-        evaluation = evaluate_board_1(board) + calculate_material_value(board)
+        evaluation = evaluate_newdata_board_128_64_32_16_eval(board)
     elif engine_type == 9:
-        evaluation = evaluate_board_2(board) + calculate_material_value(board)
+        evaluation = evaluate_newdata_board2_128_64_32_16_eval(board)
     elif engine_type == 10:
-        evaluation = evaluate_board_3(board) + calculate_material_value(board)
+        evaluation = evaluate_board_eval(board) + calculate_material_value(board)
     elif engine_type == 11:
-        evaluation = evaluate_board_4(board) + calculate_material_value(board)
+        evaluation = evaluate_board_10_10_10_eval(board) + calculate_material_value(board)
     elif engine_type == 12:
-        evaluation = evaluate_board_5(board) + calculate_material_value(board)
+        evaluation = evaluate_board_64_32_16_eval(board) + calculate_material_value(board)
+    elif engine_type == 13:
+        evaluation = evaluate_board_128_64_32_16_eval(board) + calculate_material_value(board)
+    elif engine_type == 14:
+        evaluation = evaluate_board_64_64_32_32_16_16_eval(board) + calculate_material_value(board)
+    elif engine_type == 15:
+        evaluation = evaluate_newdata_board_128_64_32_16_eval(board) + calculate_material_value(board)
+    elif engine_type == 16:
+        evaluation = evaluate_newdata_board2_128_64_32_16_eval(board) + calculate_material_value(board)
     else:
         raise ValueError("Invalid engine type.")
 

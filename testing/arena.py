@@ -6,7 +6,6 @@ from pygame_widgets.slider import Slider
 from pygame_widgets.textbox import TextBox
 import chess
 import time
-import sys
 import os
 from chessAppClasses import ChessGame, FontSprite
 
@@ -29,7 +28,7 @@ pieces = {}
 piece_types = ['P', 'N', 'B', 'R', 'Q', 'K']
 colors = ['w', 'b']
 
-images_path = os.path.join(os.path.dirname(__file__), "images")
+images_path = os.path.join(os.path.dirname(__file__), "pieces")
 
 for color in colors:
     for ptype in piece_types:
@@ -73,22 +72,25 @@ def create_game():
     if engine_type_p1 == "human" and engine_type_p2 == "human":
         print("At least one player must be an engine.")
         return
+    
+    print(f"Dropdown P1 {dropdown_player_1.getSelected()}")
+    print(f"Dropdown P2 {dropdown_player_2.getSelected()}")
 
     game = ChessGame(player_1_color, max_depth, time_limit, engine_type_p1, engine_type_p2, fen=fen_string)
 
 # Starting screen text
 starting_screen_text = pg.sprite.Group()
 starting_screen_text.add(FontSprite(WIDTH/2, 60, "Chess Training", "lucidasanstypewriter", 60))
-starting_screen_text.add(FontSprite(30, 140, "Starting position:", "lucidasanstypewriter", 16, placement="midleft"))
-starting_screen_text.add(FontSprite(30, 220, "Player playing white:", "lucidasanstypewriter", 16, placement="midleft"))
-starting_screen_text.add(FontSprite(WIDTH/4, 300, "Player 1:", "lucidasanstypewriter", 16, placement="center"))
-starting_screen_text.add(FontSprite(WIDTH*(3/4), 300, "Player 2:", "lucidasanstypewriter", 16, placement="center"))
-starting_screen_text.add(FontSprite(WIDTH/4, 390, "Maximum engine depth:", "lucidasanstypewriter", 16, placement="center"))
-starting_screen_text.add(FontSprite(WIDTH*(3/4), 390, "Engine thinking time:", "lucidasanstypewriter", 16, placement="center"))
+starting_screen_text.add(FontSprite(30, 120, "Starting position:", "lucidasanstypewriter", 16, placement="midleft"))
+starting_screen_text.add(FontSprite(30, 200, "Player playing white:", "lucidasanstypewriter", 16, placement="midleft"))
+starting_screen_text.add(FontSprite(WIDTH/4, 280, "Player 1:", "lucidasanstypewriter", 16, placement="center"))
+starting_screen_text.add(FontSprite(WIDTH*(3/4), 280, "Player 2:", "lucidasanstypewriter", 16, placement="center"))
+starting_screen_text.add(FontSprite(WIDTH/4, 360, "Maximum engine depth:", "lucidasanstypewriter", 16, placement="center"))
+starting_screen_text.add(FontSprite(WIDTH*(3/4), 360, "Engine thinking time:", "lucidasanstypewriter", 16, placement="center"))
 
 # Starting position text input
 input_starting_position = TextBox(screen,
-    30, 160, 580, 36, # Coordinates and size
+    30, 140, 580, 36, # Coordinates and size
     borderThickness=1,
     borderColour="#000000",
     colour=("#D3D3D3"),
@@ -100,7 +102,7 @@ input_starting_position = TextBox(screen,
 # Starting screen dropdowns
 
 dropdown_white_player = Dropdown(screen,
-    30, 240, 580, 36, # Coordinates and size
+    30, 220, 580, 36, # Coordinates and size
     name="Choose starting Player",
     choices=["Player 1", "Player 2"],
     values=[chess.WHITE, chess.BLACK],
@@ -110,48 +112,50 @@ dropdown_white_player = Dropdown(screen,
 )
 
 dropdown_player_1 = Dropdown(screen,
-    30, 320, WIDTH/2 - 60, 20, # Coordinates and size
+    30, 300, WIDTH/2 - 60, 18, # Coordinates and size
     name="Choose Player or Engine type",
-    choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", "Neural Network 5", 
-             "Neural Network 1 + Material",  "Neural Network 2 + Material", "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material"],
-    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", 
+             "Neural Network 5", "Neural Network 6", "Neural Network 7", "Neural Network 1 + Material",  "Neural Network 2 + Material", 
+             "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material", "Neural Network 6 + Material", "Neural Network 7 + Material"],
+    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
 )
 
 dropdown_player_2 = Dropdown(screen,
-    350, 320, WIDTH/2 - 60, 20, # Coordinates and size
+    350, 300, WIDTH/2 - 60, 18, # Coordinates and size
     name="Choose Player or Engine type",
-    choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", "Neural Network 5", 
-             "Neural Network 1 + Material",  "Neural Network 2 + Material", "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material"],
-    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", 
+             "Neural Network 5", "Neural Network 6", "Neural Network 7", "Neural Network 1 + Material",  "Neural Network 2 + Material", 
+             "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material", "Neural Network 6 + Material", "Neural Network 7 + Material"],
+    values=["human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     borderRadius=2,
     colour=("#D3D3D3"),
     font=pg.font.SysFont("lucidasanstypewriterregular", 12)
 )
 
 slider_max_depth = Slider(screen,
-    30, 420, WIDTH/2 - 60, 25, # Coordinates and size
+    30, 390, WIDTH/2 - 60, 25, # Coordinates and size
     min=1, max=15, step=1,
     initial=5,
 )
 
 slider_time = Slider(screen,
-    350, 420, WIDTH/2 - 60, 25, # Coordinates and size
+    350, 390, WIDTH/2 - 60, 25, # Coordinates and size
     min=1, max=30, step=1,
     initial=5,
 )
 
 # Slider text
 slider_text = pg.sprite.Group()
-text_slider_max_depth = TextBox(screen, 142.5, 454, 35, 30, fontSize=20, borderThickness=1)
+text_slider_max_depth = TextBox(screen, 142.5, 424, 35, 30, fontSize=20, borderThickness=1)
 text_slider_max_depth.disable()  # Act as label instead of textbox
-text_slider_time = TextBox(screen, 462.5, 454, 35, 30, fontSize=20, borderThickness=1)
+text_slider_time = TextBox(screen, 462.5, 424, 35, 30, fontSize=20, borderThickness=1)
 text_slider_time.disable()  # Act as label instead of textbox
 
 button_begin_game = Button(screen,
-    30, 510, WIDTH - 60, 80, # Coordinates and size
+    30, 495, WIDTH - 60, 80, # Coordinates and size
     text="Start Game",
     fontSize=20,
     margin=10,
