@@ -25,6 +25,9 @@ def iterative_deepening(board, max_depth, time_limit=None, engine_type=1):
 
         search_result = search(board, depth, -inf, inf, start_time, time_limit, engine_type, preffered_move=best_move)
 
+        if time_limit and (time.time() - start_time) > time_limit:
+            break
+
         if search_result[0] is None:
             break
 
@@ -37,12 +40,14 @@ def iterative_deepening(board, max_depth, time_limit=None, engine_type=1):
     if best_move is None and board.legal_moves:
         best_move = reorder_moves(board)[0]
 
+    # print(f"Time: {time.time() - start_time:.2f} seconds")
+
     return best_move
 
 def search(board, depth, alpha, beta, start_time=None, time_limit=None, engine_type=1, preffered_move=None):
     if start_time is not None and time_limit is not None:
         if time.time() - start_time > time_limit:
-            return None, None  # Signal: timeout, no evaluation
+            return 0, None  # Signal: timeout, no evaluation
     
     if board.is_game_over():
         if board.is_checkmate():
@@ -67,11 +72,11 @@ def search(board, depth, alpha, beta, start_time=None, time_limit=None, engine_t
         # Before making a move, check the time limit
         if start_time is not None and time_limit is not None:
             if time.time() - start_time > time_limit:
-                return None, None  # Exit early if time limit is exceeded
+                return 0, None  # Exit early if time limit is exceeded
         
         # Evaluate the move
         board.push(move)
-        evaluation = -search(board, depth - 1, -beta, -alpha, engine_type)[0]
+        evaluation = -search(board, depth - 1, -beta, -alpha, start_time=start_time, time_limit=time_limit, engine_type=engine_type, preffered_move=preffered_move)[0]
         board.pop()
 
         # Beta-cutoff
@@ -97,6 +102,7 @@ def quiescence_search(board, alpha, beta, engine_type=1):
             return 0  # Draw
 
     # Get static evaluation relative to WHITE
+    # print(f"Evaluating board with engine type {engine_type}")
     evaluation = None
     if engine_type == 1:
         evaluation = evaluate_position(board)
@@ -151,7 +157,7 @@ def quiescence_search(board, alpha, beta, engine_type=1):
 
         # Evaluate the move
         board.push(move)
-        evaluation = -quiescence_search(board, -beta, -alpha)
+        evaluation = -quiescence_search(board, -beta, -alpha, engine_type)
         board.pop()
 
         if evaluation >= beta:

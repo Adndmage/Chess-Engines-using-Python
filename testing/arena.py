@@ -123,7 +123,7 @@ dropdown_player_1 = Dropdown(screen,
 dropdown_player_2 = Dropdown(screen,
     350, 300, WIDTH/2 - 60, 18, # Coordinates and size
     name="Choose Player or Engine type",
-        choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", 
+    choices=["Human", "Basic Evaluation", "Material Only", "Neural Network 1", "Neural Network 2", "Neural Network 3", "Neural Network 4", 
              "Neural Network 5", "Neural Network 6", "Neural Network 7", "Neural Network 1 + Material",  "Neural Network 2 + Material", 
              "Neural Network 3 + Material",  "Neural Network 4 + Material", "Neural Network 5 + Material", "Neural Network 6 + Material", "Neural Network 7 + Material"],
     values=["Human", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
@@ -135,7 +135,7 @@ dropdown_player_2 = Dropdown(screen,
 slider_max_depth = Slider(screen,
     30, 390, WIDTH/2 - 60, 25, # Coordinates and size
     min=1, max=15, step=1,
-    initial=5,
+    initial=10,
 )
 
 slider_time = Slider(screen,
