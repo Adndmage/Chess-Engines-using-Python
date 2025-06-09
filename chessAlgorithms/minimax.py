@@ -76,12 +76,12 @@ def search(board, depth, alpha, beta, start_time=None, time_limit=None, engine_t
         
         # Evaluate the move
         board.push(move)
-        evaluation = -search(board, depth - 1, -beta, -alpha, start_time=start_time, time_limit=time_limit, engine_type=engine_type, preffered_move=preffered_move)[0]
+        evaluation = -search(board, depth - 1, -beta, -alpha, start_time, time_limit, engine_type)[0]
         board.pop()
 
         # Beta-cutoff
-        if evaluation >= beta:
-            return evaluation, move
+        # if evaluation >= beta:
+        #     return evaluation, move
         
         if evaluation > best_evaluation:
             best_evaluation = evaluation
